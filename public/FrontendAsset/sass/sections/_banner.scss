@@ -1,0 +1,86 @@
+/*----------------------------------------------
+    ## Banner Style
+----------------------------------------------*/
+.banner-area {
+	position: relative;
+	padding: 100px 0 0px;
+	&.banner-area-3 {
+		padding-top: 0;
+		.banner-offer-product {
+			a {
+				display: block;
+				background: #F4F4F4;
+				padding: 21px 0;
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+.banner-inner {
+	h1 {
+		font-weight: 800;
+		margin-bottom: 0px;
+		animation: 1.5s 0.9s fadeInLeft both;
+	}
+	h3 {
+		animation: 1.5s 0.9s fadeInLeft both;
+		font-size: 35px;
+		margin-bottom: 12px;
+	}
+	h6 {
+		font-size: 20px;
+		font-weight: 500;
+		color: #fff;
+		animation: 1.5s 1.2s fadeInLeft both;
+	}
+	p {
+		margin-top: 35px;
+		margin-bottom: 37px;
+		font-size: 16px;
+		color: var(--heading-color);
+		animation: 1.5s 1.2s fadeInLeft both;
+	}
+	.btn {
+		animation: 1.5s 1.2s fadeInLeft both;
+	}
+}
+.banner-slider {
+	padding-left: 30px;
+	margin-bottom: 8px;
+	.banner-inner {
+		h1 {
+			margin-bottom: 3px;
+		}
+		h3 {
+			font-size: 35px;
+			animation: 1.5s 0.9s fadeInLeft both;
+		}
+		.price {
+			animation: 1.5s 0.9s fadeInLeft both;
+			color: #616365;
+			margin-bottom: 13px;
+			del {
+				margin-right: 8px;
+			}
+		}
+	}
+	.slick-arrow {
+		color: #616365;
+		position: absolute;
+		font-size: 30px;
+		cursor: pointer;
+		bottom: 40px;
+		left: 30px;
+		z-index: 1;
+		&.right {
+			left: 67px;
+		}
+	}
+}
+.single-banner-product {
+	background: #F4F4F4;
+	padding-left: 30px;
+	margin-bottom: 8px;
+}

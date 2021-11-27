@@ -1,0 +1,52 @@
+/***service-area***/
+.service-area {
+	position: relative;
+	&.border-top {
+		border-top: 1px solid #000;
+	} 
+	&.style-2 {
+		padding: 15px 0;
+		.single-service-wrap {
+			display: flex;
+			align-items: center;
+			margin-bottom: 0;
+			.thumb {
+				box-shadow: none;
+				border: 1px solid #E3E3E3;
+				margin: 0; 
+				display: inline-table;
+			}
+			.wrap-details {
+				text-align: left;
+				padding-left: 20px;
+				h6 {
+					margin-bottom: 5px;
+				}
+				p {
+					margin-bottom: 0;
+					font-size: 13px;
+				}
+			}
+		}
+	}
+}
+.single-service-wrap {
+	margin-bottom: 30px;
+	.thumb {
+		height: 60px;
+		width: 60px;
+		box-shadow: 0 6px 10px rgba(0,0,0,0.16);
+		line-height: 60px;
+		border-radius: 50%;
+		display: inline-block;
+		margin-bottom: 31px;
+	}
+	.wrap-details {
+		h6 {
+			margin-bottom: 18px;
+		}
+		p {
+
+		}
+	}
+}

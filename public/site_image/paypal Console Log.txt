@@ -1,0 +1,72 @@
+{
+    "id": "1DM15773FE761992A",
+    "intent": "CAPTURE",
+    "status": "COMPLETED",
+    "purchase_units": [
+        {
+            "reference_id": "default",
+            "amount": {
+                "currency_code": "USD",
+                "value": "85.05"
+            },
+            "payee": {
+                "email_address": "sb-c47q0v7300892@business.example.com",
+                "merchant_id": "C5X3N8YNK5M9E"
+            },
+            "soft_descriptor": "PAYPAL *TEST STORE",
+            "shipping": {
+                "name": {
+                    "full_name": "John Doe"
+                },
+                "address": {
+                    "address_line_1": "Free Trade Zone",
+                    "admin_area_2": "Nicosia",
+                    "postal_code": "5999",
+                    "country_code": "CY"
+                }
+            },
+            "payments": {
+                "captures": [
+                    {
+                        "id": "3W388319KG502513L",
+                        "status": "COMPLETED",
+                        "amount": {
+                            "currency_code": "USD",
+                            "value": "85.05"
+                        },
+                        "final_capture": true,
+                        "seller_protection": {
+                            "status": "ELIGIBLE",
+                            "dispute_categories": [
+                                "ITEM_NOT_RECEIVED",
+                                "UNAUTHORIZED_TRANSACTION"
+                            ]
+                        },
+                        "create_time": "2021-11-06T11:51:25Z",
+                        "update_time": "2021-11-06T11:51:25Z"
+                    }
+                ]
+            }
+        }
+    ],
+    "payer": {
+        "name": {
+            "given_name": "John",
+            "surname": "Doe"
+        },
+        "email_address": "sb-8h8557179160@personal.example.com",
+        "payer_id": "UHS55QM6K4F7W",
+        "address": {
+            "country_code": "CY"
+        }
+    },
+    "create_time": "2021-11-06T11:51:12Z",
+    "update_time": "2021-11-06T11:51:25Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/1DM15773FE761992A",
+            "rel": "self",
+            "method": "GET"
+        }
+    ]
+}
