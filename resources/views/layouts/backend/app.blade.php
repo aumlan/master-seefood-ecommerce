@@ -6,7 +6,9 @@
     <meta name="author" content="PIXINVENT">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('meta')
-    <title>Simco Mart @yield('title')</title>
+    <title>Master See Food @yield('title')</title>
+    <link rel="icon" href={{asset('site_image/seefood_logo.png')}}>
+
     {{-- <link rel="apple-touch-icon" href="{{favIcon()}}"> --}}
     {{-- <link rel="shortcut icon" type="image/x-icon" href="{{favIcon()}}"> --}}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">

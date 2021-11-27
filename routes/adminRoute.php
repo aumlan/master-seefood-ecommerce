@@ -108,6 +108,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Backend','as'=>'admin.','middl
 
     Route::get('/product/attribute/configure/1','Product\AttributeController@size')->name('product.attribute.configure.size');
     Route::get('/product/attribute/configure/2','Product\AttributeController@color')->name('product.attribute.configure.color');
+    Route::get('/product/attribute/configure/3','Product\AttributeController@type')->name('product.attribute.configure.type');
+    Route::get('/product/attribute/configure/4','Product\AttributeController@fob')->name('product.attribute.configure.fob');
 
 
     //Frontend Settings

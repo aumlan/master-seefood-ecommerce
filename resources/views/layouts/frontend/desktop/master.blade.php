@@ -6,10 +6,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     @yield('meta')
     <meta name="description" content="">
-    <title>My Morich</title>
+    <title>Master Sea Food</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="img/fevicon.png">
+    <link rel="icon" href={{asset('site_image/seefood_logo.png')}}>
     <!-- Place favicon.ico in the root directory -->
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

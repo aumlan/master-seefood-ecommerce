@@ -25,7 +25,13 @@
                     <li class="@if(Route::is('admin.product.attribute.configure.size')) active @endif"><a href="{{route('admin.product.attribute.configure.size')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Size</span></a>
                     </li>
 
-                    <li class="@if(Route::is('admin.product.attribute.configure.color')) active @endif"><a href="{{route('admin.product.attribute.configure.color')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Color</span></a>
+{{--                    <li class="@if(Route::is('admin.product.attribute.configure.color')) active @endif"><a href="{{route('admin.product.attribute.configure.color')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Color</span></a>--}}
+{{--                    </li>--}}
+
+                    <li class="@if(Route::is('admin.product.attribute.configure.type')) active @endif"><a href="{{route('admin.product.attribute.configure.type')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Type</span></a>
+                    </li>
+
+                    <li class="@if(Route::is('admin.product.attribute.configure.fob')) active @endif"><a href="{{route('admin.product.attribute.configure.fob')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">FOB</span></a>
                     </li>
 
 

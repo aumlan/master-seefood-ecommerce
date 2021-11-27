@@ -55,6 +55,18 @@ class AttributeController extends Controller
         return view('Backend.product.attribute_configure.configure',compact('attribute','configure'));
     }
 
+    public function type($id){
+        $attribute = Attribute::find($id);
+        $configure= ConfigureAttribute::where('attribute_id',$id)->get();
+        return view('Backend.product.attribute_configure.configure',compact('attribute','configure'));
+    }
+
+    public function fob($id){
+        $attribute = Attribute::find($id);
+        $configure= ConfigureAttribute::where('attribute_id',$id)->get();
+        return view('Backend.product.attribute_configure.configure',compact('attribute','configure'));
+    }
+
     public function configureStore(Request $request,$attibute_id){
             $request->validate([
                 'name'=>'required'
