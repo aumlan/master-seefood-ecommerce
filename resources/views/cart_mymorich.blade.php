@@ -40,7 +40,8 @@
                                     <th >Product</th>
                                     <th >Price</th>
                                     <th >Size</th>
-                                    <th >Color</th>
+                                    <th >Type</th>
+                                    <th >FOB</th>
                                     <th >Quantity</th>
                                     <th class="text-left" >Total</th>
                                     <th ></th>
@@ -74,7 +75,12 @@
                                         </td>
                                         <td>
 
-                                                {{ $product->options->color }}
+                                                {{ $product->options->type }}
+
+                                        </td>
+                                        <td>
+
+                                            {{ $product->options->fob }}
 
                                         </td>
                                         <td>
@@ -106,6 +112,7 @@
                                 </tbody>
                                 <tfoot class="thead-light">
                                 <tr>
+                                    <th ></th>
                                     <th ></th>
                                     <th ></th>
                                     <th ></th>

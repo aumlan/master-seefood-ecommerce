@@ -11,7 +11,7 @@ use Cart;
 
 class CartController extends Controller
 {
-    public function AddToCart($product_id, $qty=1,$size,$color){
+    public function AddToCart($product_id, $qty=1,$size,$type,$fob){
         // Cart::destroy();
 
         $product = Product::where('id',$product_id)->first();
@@ -22,7 +22,7 @@ class CartController extends Controller
             $price = $product->sales_price_aed;
         }
 
-        $cart=Cart::add(['id' =>$product->id, 'name' => $product->name, 'qty' => $qty,'tax'=>0,'price' =>$price,'weight'=>0,'options' => ['image' => $product->productImage[0]->image,'slug'=>$product->slug,'size'=>$size,'color'=>$color ]]);
+        $cart=Cart::add(['id' =>$product->id, 'name' => $product->name, 'qty' => $qty,'tax'=>0,'price' =>$price,'weight'=>0,'options' => ['image' => $product->productImage[0]->image,'slug'=>$product->slug,'size'=>$size,'type'=>$type,'fob'=>$fob ]]);
 
 //        dd($cart);
         return response()->json($cart);
@@ -136,7 +136,9 @@ class CartController extends Controller
                 'price' => $product['price'],
                 'sub_total' => $product['subtotal'],
                 'size' => $product['options']['size'],
-                'color' => $product['options']['color'],
+//                'color' => $product['options']['color'],
+                'type' => $product['options']['type'],
+                'fob' => $product['options']['fob'],
 
             ]);
         }

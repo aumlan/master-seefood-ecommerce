@@ -105,19 +105,49 @@
                                 @endforeach
                             </select>
                         </div>
+{{--                        <div class="product-color">--}}
+{{--                            <span class="sub-title">Color:</span>--}}
+{{--                            <select class="select_option" name="color" id="color" >--}}
+{{--                                @foreach ($product->product_attr as $atrr)--}}
+{{--                                    @if (isColor($atrr->configure_attribute_id)!==null)--}}
+{{--                                        @php--}}
+{{--                                            $getColor =  isColor($atrr->configure_attribute_id);--}}
+{{--                                        @endphp--}}
+{{--                                        <option value="{{$getColor->name}}" >{{$getColor->name}}</option>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+
                         <div class="product-color">
-                            <span class="sub-title">Color:</span>
-                            <select class="select_option" name="color" id="color" >
+                            <span class="sub-title">Type:</span>
+                            <select class="select_option" name="type" id="type" >
                                 @foreach ($product->product_attr as $atrr)
-                                    @if (isColor($atrr->configure_attribute_id)!==null)
+                                    @if (isType($atrr->configure_attribute_id)!==null)
                                         @php
-                                            $getColor =  isColor($atrr->configure_attribute_id);
+                                            $getType=  isType($atrr->configure_attribute_id);
                                         @endphp
-                                        <option value="{{$getColor->name}}" >{{$getColor->name}}</option>
+                                        <option value="{{$getType->name}}" >{{$getType->name}}</option>
                                     @endif
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="product-color">
+                            <span class="sub-title">FOB:</span>
+                            <select class="select_option" name="fob" id="fob" >
+                                @foreach ($product->product_attr as $atrr)
+                                    @if (isFOB($atrr->configure_attribute_id)!==null)
+                                        @php
+                                            $getFOB=  isFOB($atrr->configure_attribute_id);
+                                        @endphp
+                                        <option value="{{$getFOB->name}}" >{{$getFOB->name}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+
+
                         <div class="product-quantity">
                             <span class="sub-title">Qty:</span>
                             <form>
@@ -134,7 +164,8 @@
                                     onclick="addToCart({{ $product->id }},
                                         document.getElementById('quantity_input').value,
                                         document.getElementById('size').value,
-                                        document.getElementById('color').value)"
+                                        document.getElementById('type').value,
+                                        document.getElementById('fob').value)"
                                 {{ $product->stock_status == 'In_stock' ? '' : 'disabled' }}
                             >
                                 <i class="fas fa-cart-plus"></i>

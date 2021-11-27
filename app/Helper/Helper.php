@@ -68,6 +68,18 @@ function isColor($attr_id){
     $color = ConfigureAttribute::where('id',$attr_id)->where('attribute_id',2)->first();
     return $color;
 }
+
+function isType($attr_id){
+    $type = ConfigureAttribute::where('id',$attr_id)->where('attribute_id',3)->first();
+    return $type;
+}
+
+function isFOB($attr_id){
+    $fob = ConfigureAttribute::where('id',$attr_id)->where('attribute_id',4)->first();
+    return $fob;
+}
+
+
 function search_in_array($value,$arr){
     if($arr!=Null){
         $result = in_array($value,$arr,true);

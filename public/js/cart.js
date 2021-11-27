@@ -8,9 +8,9 @@ $(document).ready(function () {
     };
 })
 
-function addToCart(product_id,qty,size,color) {
-    console.log(product_id+ ' '+ color);
-    fetch('/product/add/to/cart/' + product_id +'/'+ qty +'/'+ size +'/'+ color)
+function addToCart(product_id,qty,size,type,fob) {
+    console.log(product_id+ ' '+ type);
+    fetch('/product/add/to/cart/' + product_id +'/'+ qty +'/'+ size +'/'+ type +'/'+ fob)
         .then(response => response.json())
         .then(data=> console.log(data) )
         .then(data => TotalCart());
