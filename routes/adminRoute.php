@@ -110,6 +110,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Backend','as'=>'admin.','middl
     Route::get('/product/attribute/configure/2','Product\AttributeController@color')->name('product.attribute.configure.color');
     Route::get('/product/attribute/configure/3','Product\AttributeController@type')->name('product.attribute.configure.type');
     Route::get('/product/attribute/configure/4','Product\AttributeController@fob')->name('product.attribute.configure.fob');
+    Route::get('/product/attribute/configure/5','Product\AttributeController@destination')->name('product.attribute.configure.destination');
 
 
     //Frontend Settings
@@ -154,6 +155,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Backend','as'=>'admin.','middl
 //    Route::get('/order/view/{order_id}','Order\OrderController@show')->name('order.view');
     Route::get('/user/delete/{id}','User\UserController@destroy')->name('user.destroy');
 //    Route::get('/order/updateOrderStatus/{id}','Order\OrderController@statusChange')->name('order.statusChange');
+
+
+
+    Route::get('/get/attribute/sizeSpec','Product\ProductController@getsizeSpec')->name('categories.get.sizeSpec');
 
 
     //Software  route

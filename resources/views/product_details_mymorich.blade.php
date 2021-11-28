@@ -84,10 +84,12 @@
                         </div> --}}
                         <div class="price">
                             @if($product->discount_price > 0)
-                                AED {{ $product->discount_price }}
+                                BDT <span id="product_price">{{ $product->discount_price }} </span>
+                                <input type="hidden" id="product_price_old" value="{{ $product->discount_price }}"/>
                                 <del style="font-size: 15px"> {{ $product->sales_price_aed }}</del>
                             @else
-                                AED {{ $product->sales_price_aed }}
+                                BDT <span id="product_price">{{ $product->sales_price_aed }} </span>
+                                <input type="hidden" id="product_price_old" value="{{ $product->sales_price_aed }}"/>
                             @endif
                         </div>
 
@@ -146,6 +148,32 @@
                                 @endforeach
                             </select>
                         </div>
+
+                                        @if (count($product->productSpecification) > 0)
+                                            <div class="item_overview">
+                                                <div class="item_overview_title">
+                                                    <h5>Product Specs</h5>
+                                                </div>
+                                                <select class="select_option" name="size" id="sizePrice" onchange="setSizePrice()">
+
+                                                    @foreach ($product->productSpecification as $specs)
+                                                    <option value="{{$specs->attribute_description}}" >{{$specs->attribute_name}}</option>
+                                                    @endforeach
+                                                </select>
+
+{{--                                                <table class="table">--}}
+{{--                                                    <tbody>--}}
+{{--                                                        @foreach ($product->productSpecification as $specs)--}}
+{{--                                                            <tr>--}}
+{{--                                                                <th>{{$specs->attribute_name}}</th>--}}
+{{--                                                                <td>{{$specs->attribute_description}}</td>--}}
+{{--                                                            </tr>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </tbody>--}}
+{{--                                                </table>--}}
+                                            </div>
+                                        @endif
+
 
 
                         <div class="product-quantity">
@@ -464,5 +492,44 @@
             //     }
             // });
         });
+    </script>
+
+    <script>
+        function setSizePrice() {
+            var oldPrice = parseInt($('#product_price_old').val());
+            var newPrice = 0;
+
+            // alert($('#sizePrice').val());
+            //
+            // alert($('#product_price').text());
+
+            newPrice = oldPrice + parseInt($('#sizePrice').val());
+
+            $('#product_price').text(newPrice);
+
+            var finalPrice = document.getElementById('product_price').innerText;
+
+            alert( finalPrice );
+
+            {{--var brand_model_id = $('#sub_model_id').val();--}}
+            {{--if (brand_id != null) {--}}
+            {{--    $.ajax({--}}
+            {{--        url: '{{ url('admin/get/brand/submodelyear') }}/' + brand_model_id,--}}
+            {{--        type: 'GET',--}}
+            {{--        dataType: 'json',--}}
+            {{--    })--}}
+            {{--        .done(function(response) {--}}
+            {{--            console.log(response)--}}
+            {{--            data = '<option value="">Select Year</option>';--}}
+            {{--            selected = '';--}}
+            {{--            $.each(response, function(index, val) {--}}
+            {{--                console.log('ok');--}}
+            {{--                data += '<option value=' + val.id + ' ' + selected + '>' + val.year + '</option>';--}}
+            {{--            });--}}
+            {{--            $('#sub_model_year_id').html(data);--}}
+            {{--        });--}}
+
+            {{--} else {}--}}
+        }
     </script>
 @endsection

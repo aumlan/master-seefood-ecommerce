@@ -8,6 +8,18 @@
                     <small id="emailHelp" class="form-text text-muted">{{$message }}</small>
                 @enderror
             </div>
+
+            @if(Route::current()->getName() == 'product.attribute.configure.fob')
+                {{ dd(Route::current()->getName())  }}
+                <div class="form-group">
+                    <label for="first-name-vertical">Attribute Name</label>
+                    <input type="text" id="first-name-vertical" class="form-control" name="name" placeholder="Name">
+                    @error('name')
+                    <small id="emailHelp" class="form-text text-muted">{{$message }}</small>
+                    @enderror
+                </div>
+            @endif
+
         </div>
         <div class="col-12">
             <fieldset class="form-group">

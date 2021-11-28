@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\BrandModel;
 use App\Models\BrandModelYear;
 use App\Models\Category;
+use App\Models\ConfigureAttribute;
 use App\Models\Currency;
 use App\Models\Manufacture;
 use App\Models\Product;
@@ -27,7 +28,9 @@ class ProductController extends Controller
         $brands= Brand::all();
         $manufactures= Manufacture::all();
         $currency = Currency::find(1);
-        return view('Backend.product.index',compact('attributes','categoris','brands','manufactures','currency'));
+        $spec = ConfigureAttribute::where('attribute_id',1)->get();
+
+        return view('Backend.product.index',compact('attributes','categoris','brands','manufactures','currency','spec'));
     }
 
 
@@ -36,6 +39,10 @@ class ProductController extends Controller
         return response()->json($subCategory);
     }
 
+    public function getsizeSpec(){
+        $spec = ConfigureAttribute::where('attribute_id',1)->get();
+        return response()->json($spec);
+    }
 
     public function list(){
         $products = Product::orderBy('id','DESC')
@@ -132,6 +139,19 @@ class ProductController extends Controller
                     ]);
                 }
             }
+
+            if(count($request->specs_name)>0){
+//                $oldProduct = ProductSpecification::where('product_id',$product->id)->delete();
+                foreach($request->specs_name as $key=>$specs){
+                    ProductSpecification::create([
+                        'attribute_name'=>$request->specs_name[$key],
+                        'attribute_description'=>$request->specs_value[$key],
+                        'product_id'=>$product->id
+                    ]);
+                }
+            }
+
+
         }
 
         return redirect()->back();

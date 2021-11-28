@@ -207,32 +207,41 @@
             </div>
             <div class="col-xl-5 col-lg-4">
 
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">--}}
-{{--                        Product Specs--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body" id="more_box">--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-lg-5">--}}
-{{--                                <div class="form-group">--}}
+                <div class="card">
+                    <div class="card-header">
+                        Product Specs
+                    </div>
+                    <div class="card-body" id="more_box">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="form-group">
 {{--                                    <input type="text" name="specs_name[]" class="form-control" id="Manufacturer"--}}
 {{--                                        placeholder="Specs Name">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-5">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <input type="text" name="specs_value[]" class="form-control" id="specsValue"--}}
-{{--                                        placeholder="Specs Value">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-1">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <button type="button" id="more_specs" class="btn btn-primary">+</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+
+                                    <select class="select form-control" name="specs_name[]" id="sizePrice" >
+
+                                        @foreach ($spec as $specs)
+                                            <option value="{{$specs->name}}" >{{$specs->name}}</option>
+                                        @endforeach
+                                    </select>
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <input type="text" name="specs_value[]" class="form-control" id="specsValue"
+                                        placeholder="Specs Value">
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    <button type="button" id="more_specs" class="btn btn-primary">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="card">
@@ -386,6 +395,10 @@
         $('.input-images-1').imageUploader();
     </script>
     <script>
+        {{--var array = {{ json_encode($spec) }};--}}
+        {{--var array = JSON.parse('{{ json_encode($spec) }}');--}}
+        {{--console.log(array);--}}
+
         $('#more_specs').on('click', function() {
             add_others();
         });
@@ -394,7 +407,10 @@
             var group = `<div class="row">
                             <div class="col-lg-5">
                                 <div class="form-group">
-                                    <input type="text" name="specs_name[]" class="form-control" id="Manufacturer" placeholder="Specs Name">
+<!--                                    <input type="text" name="specs_name[]" class="form-control" id="Manufacturer" placeholder="Specs Name">-->
+                                    <select class="select form-control sub_sizeSpec_id" name="specs_name[]" id="sub_sizeSpec_id">
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
@@ -409,6 +425,7 @@
                             </div>
                         </div>`;
             $('#more_box').append(group);
+            setSubSizeSpec();
         }
         $('#more_box').on('click', '.more_specs', function() {
             $(this).parent().parent().parent().remove();
@@ -427,14 +444,35 @@
         });
 
 
+        function setSubSizeSpec() {
+                $.ajax({
+                        url: '{{ url('admin/get/attribute/sizeSpec') }}',
+                        type: 'GET',
+                        dataType: 'json',
+                    })
+                    .done(function(response) {
+                        console.log(response)
+                        data = '<option value="">Select Size & Price</option>';
+                        selected = '';
+                        $.each(response, function(index, val) {
+                            console.log(val.name.trim());
+                            // data += '<option value=' + val.name + ' kilo'>' + val.name + '</option>';
+                            data += `<option value="${val.name}">${val.name}</option>`;
+                        });
+                        $('.sub_sizeSpec_id').html(data);
+                    });
+
+
+        }
+
         function setSubCategory() {
             var category_id = $('#category_id').val();
             if (category_id != null) {
                 $.ajax({
-                        url: '{{ url('admin/get/product/subcategory') }}/' + category_id,
-                        type: 'GET',
-                        dataType: 'json',
-                    })
+                    url: '{{ url('admin/get/product/subcategory') }}/' + category_id,
+                    type: 'GET',
+                    dataType: 'json',
+                })
                     .done(function(response) {
                         console.log(response)
                         data = '<option value="">Select Sub Category</option>';
@@ -448,8 +486,6 @@
 
             } else {}
         }
-
-
         function setSubModel() {
             var brand_id = $('#brand_id').val();
             if (brand_id != null) {

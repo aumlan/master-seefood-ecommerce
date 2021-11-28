@@ -9,6 +9,7 @@ $(document).ready(function () {
 })
 
 function addToCart(product_id,qty,size,type,fob) {
+    alert('added cart');
     console.log(product_id+ ' '+ type);
     fetch('/product/add/to/cart/' + product_id +'/'+ qty +'/'+ size +'/'+ type +'/'+ fob)
         .then(response => response.json())

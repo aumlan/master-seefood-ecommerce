@@ -34,8 +34,12 @@
                     <li class="@if(Route::is('admin.product.attribute.configure.fob')) active @endif"><a href="{{route('admin.product.attribute.configure.fob')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">FOB</span></a>
                     </li>
 
+{{--                    <li class="@if(Route::is('admin.product.attribute.configure.destination')) active @endif"><a href="{{route('admin.product.attribute.configure.destination')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Destination</span></a>--}}
+{{--                    </li>--}}
 
-{{--                    <li class="@if(Route::is('admin.product.attribute')) active @endif"><a href="{{route('admin.product.attribute')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Attributes</span></a>--}}
+
+
+                    <li class="@if(Route::is('admin.product.attribute')) active @endif"><a href="{{route('admin.product.attribute')}}"><i class="fa fa-long-arrow-right"></i><span class="menu-item">Attributes</span></a>
                     </li>
                 </ul>
             </li>
