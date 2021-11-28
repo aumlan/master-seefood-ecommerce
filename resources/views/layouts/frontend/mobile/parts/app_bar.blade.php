@@ -4,7 +4,7 @@
     </div>
     <a href="{{url('/')}}">
         <div class="MobileLogo">
-            <img src="{{asset('site_image/logo.png')}}" alt="">&nbsp;
+            <img src="{{asset('site_image/seefood_logo.png')}}" alt="">&nbsp;
         </div>
     </a>
     <div class="rightTopIcon"></div>

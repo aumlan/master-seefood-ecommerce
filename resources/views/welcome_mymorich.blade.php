@@ -15,7 +15,7 @@
         <div class="slider owl-carousel" id="single_slider">
             @foreach ($sliders as $slider)
                 <div class="slider_image">
-                    <img style="object-fit: fill" src="{{asset($slider->image)}}" alt="">
+                    <img style="object-fit: cover" src="{{asset($slider->image)}}" alt="">
                 </div>
             @endforeach
         </div>
@@ -42,7 +42,7 @@
                                 <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
                                 <h6><a
                                         href="{{ route('brand.products', [$prd->id, $prd->name] ) }}">
-                                        <span style="color: #ff8e01">{{ $prd->name }}</span>
+                                        <span style="color: #054b74">{{ $prd->name }}</span>
                                     </a>
                                 </h6>
 
@@ -89,7 +89,7 @@
                                 <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
                                 <h6><a
                                         href="{{ route('product.details', [$prd->id, $prd->slug]) }}">
-                                        <span style="color: #ff8e01">{{ $prd->name }}</span>
+                                        <span style="color: #054b74">{{ $prd->name }}</span>
                                     </a>
                                 </h6>
                                 <div class="star-rating">
@@ -143,7 +143,7 @@
                                     <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
                                     <h6><a
                                             href="{{ route('product.details', [$prd->id, $prd->slug]) }}">
-                                            <span style="color: #ff8e01">{{ $prd->name }}</span>
+                                            <span style="color: #054b74">{{ $prd->name }}</span>
                                         </a>
                                     </h6>
                                     <div class="star-rating">
@@ -198,7 +198,7 @@
                                 <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
                                 <h6><a
                                         href="{{ route('product.details', [$prd->id, $prd->slug]) }}">
-                                        <span style="color: #ff8e01">{{ $prd->name }}</span>
+                                        <span style="color: #054b74">{{ $prd->name }}</span>
                                     </a>
                                 </h6>
                                 <div class="star-rating">
@@ -253,7 +253,7 @@
                                 <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
                                 <h6><a
                                         href="{{ route('product.details', [$prd->id, $prd->slug]) }}">
-                                        <span style="color: #ff8e01">{{ $prd->name }}</span>
+                                        <span style="color: #054b74">{{ $prd->name }}</span>
                                     </a>
                                 </h6>
                                 <div class="star-rating">
@@ -309,7 +309,7 @@
     <!-- spaciality-Area Start-->
     <section class="pd-top-65">
         <div class="container-fluid pd-xy-120">
-            <div class="spaciality-area" style="background-color: #F5F5F5">
+            <div class="spaciality-area" style="border-top: 1px solid #00000017;">
                 <div class="row justify-content-center mb-4">
                     <div class="col-lg-8">
                         <div class="section-title text-center">
@@ -323,7 +323,7 @@
                             <div class="row h-100 g-0">
                                 <div class="col-xl-6 align-self-center order-1 order-xl-0">
                                     <div class="wrap-details">
-                                        <h5>High Quality Product</h5>
+                                        <h5>SAFE PACKEGING</h5>
                                         <span class="btn-d-border" >Get Started <i
                                                 class="fa fa-angle-right"></i></span>
                                     </div>
@@ -341,7 +341,7 @@
                             <div class="row h-100 g-0">
                                 <div class="col-xl-6 align-self-center order-1 order-xl-0">
                                     <div class="wrap-details">
-                                        <h5>On Time Delivery</h5>
+                                        <h5>AMAZING CUSTOMER SERVICE</h5>
                                         <span class="btn-d-border" >Get Started <i
                                                 class="fa fa-angle-right"></i></span>
                                     </div>
@@ -359,7 +359,7 @@
                             <div class="row h-100 g-0">
                                 <div class="col-xl-6 align-self-center order-1 order-xl-0">
                                     <div class="wrap-details">
-                                        <h5>Best Price</h5>
+                                        <h5>FAST DELIVERY</h5>
                                         <span class="btn-d-border" >Get Started <i
                                                 class="fa fa-angle-right"></i></span>
                                     </div>

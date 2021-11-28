@@ -247,7 +247,7 @@ label {
 }
 .humberMenu{
 	font-size: 25px;
-	color: #26994fd4;
+	color: #184572;
 }
 .MobileLogo{
 	height: 40px;
@@ -288,10 +288,10 @@ label {
 /* bottom Navigationbar start css */
 
 .menuActive{
-	color: #EC2029;
+	color: #184572;
 }
 .menuActive > p{
-	color: #EC2029!important;
+	color: #184572!important;
 }
 
 .bottomNavigationBar{
@@ -333,7 +333,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #26994fd4;
+    background-color:  #184572;
     border-radius: 50%;
     color: #fff;
     font-size: 18px;
@@ -869,7 +869,7 @@ input[type=text], select {
     color: whitesmoke;
     border-top-style: hidden;
     border-right-style: hidden;
-    background-color: #26994fd4;
+    background-color: #1E5A98;
     border-bottom-style: hidden;
     border-radius: 0 25px 25px 0 !important;
     padding-left: 10px;

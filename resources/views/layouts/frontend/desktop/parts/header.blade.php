@@ -232,8 +232,8 @@
 {{--                                        </div>--}}
 
 {{--                                    </li>--}}
-                                    <li class=" text-uppercase mr-3"><a href={{ route('welcome') }}> Home </a></li>
-                                    <li class=" text-uppercase mr-3"><a href={{ route('terms.about') }}> About Us </a></li>
+{{--                                    <li class=" text-uppercase mr-3"><a href={{ route('welcome') }}> Home </a></li>--}}
+{{--                                    <li class=" text-uppercase mr-3"><a href={{ route('terms.about') }}> About Us </a></li>--}}
 
                                     @foreach($global_categories as $category)
                                         <li class=" text-uppercase mr-3">
@@ -243,7 +243,7 @@
 
 
 
-                                    <li class=" text-uppercase mr-3"><a href={{ route('contact') }}> Contact </a></li>
+{{--                                    <li class=" text-uppercase mr-3"><a href={{ route('contact') }}> Contact </a></li>--}}
 
 {{--                                    <li class=" text-uppercase"><a href={{ route('software.list') }}> Software/Token </a></li>--}}
 {{--                                    <li class=" text-uppercase"><a href="#"> Downloads </a></li>--}}

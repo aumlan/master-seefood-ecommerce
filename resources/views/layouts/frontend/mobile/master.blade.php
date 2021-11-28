@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title','My Morich')</title>
+    <title>@yield('title','Master Sea Food')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('meta')
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('site_image/logo.png')}}">
+    <link rel="icon" href={{asset('site_image/seefood_logo.png')}}>
 
     <!-- Place favicon.ico in the root directory -->
 

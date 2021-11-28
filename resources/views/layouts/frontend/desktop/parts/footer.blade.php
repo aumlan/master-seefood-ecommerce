@@ -8,7 +8,7 @@
                 <div class="col-sm-5">
                     <h4>About</h4>
                     <p>
-                        my morich about
+                        Master See Food About
                     </p>
 
                 </div>
@@ -44,7 +44,7 @@
 
 
                     <ul class="list-unstyled text-white">
-                        help my mporich
+                        help my Master Se Food
 {{--                        <li>+971 4 2342 522</li>--}}
 {{--                        <li>info@mawazperfum.com</li>--}}
 {{--                        <li>Hasan Abdulraheem Building,Shop No.03, 04 & 05.</li>--}}
@@ -56,7 +56,7 @@
 
             <div class="col-lg-12">
                 <div class="footer-logo">
-                    <a href="index.php?route=common/home"><img src="{{asset('site_image/logo_white.png')}}" alt=" " width="150px"></a>
+                    <a href="index.php?route=common/home"><img src="{{asset('site_image/seefood_logo.png')}}" alt=" " width="150px"></a>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
 
             <div class="col-lg-12 text-center">
                 <div class="footer-copyright">
-                    <p>Copyright © 2021 My Morich. All rights reserved.</p>
+                    <p>Copyright © 2021 Master See Food. All rights reserved.</p>
                 </div>
             </div>
 

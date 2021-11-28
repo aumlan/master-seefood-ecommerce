@@ -11,34 +11,34 @@
         </div>
     </div>
 
-    <div class="cardSection">
-        <div class="cardSectionTitle">
-            <div class="titleText">
-               <p>{{ __('frontend.popularBrands') }}</p>
-            </div>
-            <div class="titleIcon">
-                <span>{{ __('frontend.seeMore') }}<i class="fas fa-arrow-right"></i></span>
-            </div>
-        </div>
+{{--    <div class="cardSection">--}}
+{{--        <div class="cardSectionTitle">--}}
+{{--            <div class="titleText">--}}
+{{--               <p>{{ __('frontend.popularBrands') }}</p>--}}
+{{--            </div>--}}
+{{--            <div class="titleIcon">--}}
+{{--                <span>{{ __('frontend.seeMore') }}<i class="fas fa-arrow-right"></i></span>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
-        <div class="BrandsCard">
-            <div class="brands">
-                @foreach ($brands as $brand)
-                    <a href="{{ route('brand.products', [$brand->id, $brand->name] ) }}" class="text-dark">
-                        <div class="brand">
-                            <div class="brandIcon">
-                                <img src="{{ asset($brand->icon) }}" alt="" srcset="">
-                            </div>
-                            <div class="brandName">
-                                <p>{{ $brand->name }}</p>
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
+{{--        <div class="BrandsCard">--}}
+{{--            <div class="brands">--}}
+{{--                @foreach ($brands as $brand)--}}
+{{--                    <a href="{{ route('brand.products', [$brand->id, $brand->name] ) }}" class="text-dark">--}}
+{{--                        <div class="brand">--}}
+{{--                            <div class="brandIcon">--}}
+{{--                                <img src="{{ asset($brand->icon) }}" alt="" srcset="">--}}
+{{--                            </div>--}}
+{{--                            <div class="brandName">--}}
+{{--                                <p>{{ $brand->name }}</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                @endforeach--}}
 
-            </div>
-        </div>
-    </div>
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     @if (count($new_arrivals) > 0)
         <div class="cardSection">

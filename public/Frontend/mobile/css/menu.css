@@ -34,7 +34,7 @@
 	top:15px;
 	right: 25px;
 	color: #fff;
-	background-color: #26994fd4;
+	background-color: #184572;
 	width: 30px;
 	height: 30px;
 	font-size: 14px;
@@ -64,10 +64,10 @@
 }
 .mobile_menu_sidebar ul li:hover >a{
 	color: #ffffff;
-	background-color: rgba(46, 184, 96, 0.83);
+	background-color: #1e5e9e;
 }
 .side_menu_active{
-    background-color: #26994fd4;
+    background-color: #184572;
     color: #ffffff!important;
 }
 .mobile_menu_sidebar li > .mobile_submneu{

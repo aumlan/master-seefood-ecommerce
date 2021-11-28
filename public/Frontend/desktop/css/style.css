@@ -674,7 +674,7 @@ ul {
 }
 
 .bg-main {
-  background: #2fcb53;
+  background: #070642b8;
 }
 
 .bg-black {
@@ -1598,7 +1598,7 @@ a:hover {
     color: whitesmoke;
     border-top-style: hidden;
     border-right-style: hidden;
-    background-color: #149553;
+    background-color: #1E5A98;
     border-bottom-style: hidden;
     border-radius: 0 25px 25px 0 !important;
     padding-left: 10px;
@@ -1676,7 +1676,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #000;
+    background-color: #184572;
 }
 .menu ul li.static {
     position: static;
@@ -3358,7 +3358,7 @@ a:hover {
 ---------------------------------------------------*/
 footer {
     background-color: #000;
-    background: #000;
+    background: #0f2244;
 }
 footer {
     box-sizing: border-box;
@@ -3426,7 +3426,7 @@ footer .footer-logo::after {
 }
 footer .footer-social-icons {
     text-align: center;
-    margin-top: 20px;
+
 }
 footer .footer-social-icons ul li a {
     color: rgba(255,255,255,.7);
@@ -3465,7 +3465,7 @@ footer p {
    appearance: none;
    backface-visibility: hidden;
    /*background-color: #FFD700;*/
-   background-color: #17ac60;
+   background-color: #1E5A98;
    border-radius: 8px;
    border-style: none;
    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
@@ -3566,7 +3566,7 @@ footer p {
 
 .fancy-border {
     border: 12px solid #000000;
-    background-color: #0b7c25;
+    background-color: #184572;
     border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cg fill='none' stroke='%23B88846' stroke-width='2'%3E%3Cpath d='M1 1h73v73H1z'/%3E%3Cpath d='M8 8h59v59H8z'/%3E%3Cpath d='M8 8h16v16H8zM51 8h16v16H51zM51 51h16v16H51zM8 51h16v16H8z'/%3E%3C/g%3E%3Cg fill='%23B88846'%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='59' cy='16' r='2'/%3E%3Ccircle cx='59' cy='59' r='2'/%3E%3Ccircle cx='16' cy='59' r='2'/%3E%3C/g%3E%3C/svg%3E") 25;
     text-align: center;
 }

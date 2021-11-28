@@ -89,7 +89,10 @@
 
                 <ul class="product_details_ui pl-4 mt-3">
 
-                    <li class="font-weight-bold">{{ $product->category->name  }} </li>
+                    @if($product->category)
+                        <li class="font-weight-bold">{{ $product->category->name  }} </li>
+                    @endif
+
                     @if($product->short_description)
                         <li>{{ $product->short_description }}</li>
                     @endif
