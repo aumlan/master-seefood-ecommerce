@@ -8,6 +8,7 @@ use App\Models\BrandModel;
 use App\Models\BrandModelYear;
 use App\Models\Currency;
 use App\Models\Product;
+use App\Models\Shipping;
 use App\Models\Slider;
 use App\QueryFilters\Brand_Sort;
 use App\QueryFilters\Model_Sort;
@@ -44,11 +45,13 @@ class HomeController extends Controller
 
     public function productDetails($id,$slug){
         $product =Product::find($id);
+        $shipping =Shipping::all();
+
         $products =Product::where('category_id',$product->category_id)->skip(0)->take(8)->get();
         if(!MoBileView()){
-        return view('product_details_mymorich',compact('product','products'));
+        return view('product_details_mymorich',compact('product','products','shipping'));
         }else{
-            return view('mobile.product_details_mymorich',compact('product','products'));
+            return view('mobile.product_details_mymorich',compact('product','products','shipping'));
         }
     }
 
@@ -114,6 +117,11 @@ class HomeController extends Controller
 
     public function getSubModel($id){
         $subModel= BrandModel::where('brand_id',$id)->get();
+        return response()->json($subModel);
+    }
+
+    public function getDestination($id){
+        $subModel= Shipping::where('id',$id)->get();
         return response()->json($subModel);
     }
 

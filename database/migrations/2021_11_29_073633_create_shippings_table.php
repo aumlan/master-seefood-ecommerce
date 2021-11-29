@@ -16,10 +16,10 @@ class CreateShippingsTable extends Migration
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
 
-            $table->string('destination_id');
-            $table->string('destination_name');
-            $table->integer('by_sea');
-            $table->integer('by_air');
+            $table->string('destination_id')->nullable();
+            $table->string('destination_name')->nullable();
+            $table->integer('by_sea')->nullable();
+            $table->integer('by_air')->nullable();
 
             $table->timestamps();
         });

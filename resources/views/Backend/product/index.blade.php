@@ -252,14 +252,17 @@
 
                         @foreach (attribute() as $attr)
                             <div class="form-group">
-                                <label for="attr{{ $attr->id }}">{{ $attr->name }}</label>
-                                <select class="select2 form-control" multiple="multiple" name="attr[]"
-                                    id="attr{{ $attr->id }}">
-                                    <option value="">Select {{ $attr->name }}</option>
-                                    @foreach ($attr->attributes as $confi)
-                                        <option value="{{ $confi->id }}">{{ $confi->name }}</option>
-                                    @endforeach
-                                </select>
+                                @if($attr->name  == 'Size' || $attr->name  == 'Color' || $attr->name  == 'Destination')
+                                @else
+                                    <label for="attr{{ $attr->id }}">{{ $attr->name }}</label>
+                                    <select class="select2 form-control" multiple="multiple" name="attr[]"
+                                            id="attr{{ $attr->id }}">
+                                        <option value="">Select {{ $attr->name }}</option>
+                                        @foreach ($attr->attributes as $confi)
+                                            <option value="{{ $confi->id }}">{{ $confi->name }}</option>
+                                        @endforeach
+                                    </select>
+                                @endif
                             </div>
                         @endforeach
                     </div>

@@ -76,6 +76,8 @@ Route::get('/brands/{id}/{slug}', [UserController::class, 'brand_products'])->na
 
 Route::get('/get/brand/submodel/{id}',[ HomeController::class,'getSubModel'])->name('brand.get.submodel');
 
+Route::get('/get/shipping/{id} ',[ HomeController::class,'getDestination'])->name('brand.get.shipping');
+
 Route::get('/get/brand/submodelyear/{id}',[ HomeController::class,'getSubModelYear'])->name('brand.get.submodelyear');
 
 Route::get('/search-filter',[ HomeController::class,'search_filter'])->name('search.filter');

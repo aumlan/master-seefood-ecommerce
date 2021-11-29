@@ -91,22 +91,41 @@
                                 BDT <span id="product_price">{{ $product->sales_price_aed }} </span>
                                 <input type="hidden" id="product_price_old" value="{{ $product->sales_price_aed }}"/>
                             @endif
+
+                                <input type="hidden" id="product_price_size" placeholder="size" value="0" />
+                                <input type="hidden" id="product_price_fob" placeholder="fob" value="0" />
+                                <input type="hidden" id="product_price_shipping" placeholder="shipping"  value="0" />
+
+
                         </div>
 
                         <p>{{ $product->short_description }}</p>
+
+                        @if (count($product->productSpecification) > 0)
                         <div class="product-color">
                             <span class="sub-title">Size:</span>
-                            <select class="select_option" name="size" id="size" >
-                                @foreach ($product->product_attr as $atrr)
-                                    @if (isSize($atrr->configure_attribute_id)!==null)
-                                        @php
-                                            $getSize =  isSize($atrr->configure_attribute_id)
-                                        @endphp
-                                        <option value="{{$getSize->name}}" >{{$getSize->name}}</option>
-                                    @endif
+                            <select class="select_option" name="size" id="sizePrice" onchange="setSizePrice()">
+                                <option value="" disabled selected> Select Size </option>
+                                @foreach ($product->productSpecification as $specs)
+                                    <option value="{{$specs->attribute_description}}" > {{$specs->attribute_name}} - {{$specs->attribute_description}} BDT </option>
                                 @endforeach
                             </select>
                         </div>
+                        @endif
+{{--                        @if (count($product->productSpecification) > 0)--}}
+{{--                            <div class="item_overview">--}}
+{{--                                <div class="item_overview_title">--}}
+{{--                                    <h5>Product Specs</h5>--}}
+{{--                                </div>--}}
+{{--                                <select class="select_option" name="size" id="sizePrice" onchange="setSizePrice()">--}}
+
+{{--                                    @foreach ($product->productSpecification as $specs)--}}
+{{--                                        <option value="{{$specs->attribute_description}}" >{{$specs->attribute_name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+
 {{--                        <div class="product-color">--}}
 {{--                            <span class="sub-title">Color:</span>--}}
 {{--                            <select class="select_option" name="color" id="color" >--}}
@@ -137,43 +156,37 @@
 
                         <div class="product-color">
                             <span class="sub-title">FOB:</span>
-                            <select class="select_option" name="fob" id="fob" >
+                            <select class="select_option" name="fobPrice" id="fobPrice" onchange="setFOBPrice()">
+                                <option value="" disabled selected> Select FOB </option>
                                 @foreach ($product->product_attr as $atrr)
                                     @if (isFOB($atrr->configure_attribute_id)!==null)
                                         @php
                                             $getFOB=  isFOB($atrr->configure_attribute_id);
                                         @endphp
-                                        <option value="{{$getFOB->name}}" >{{$getFOB->name}}</option>
+                                        <option value="{{$getFOB->icon}}" >{{$getFOB->name}}</option>
                                     @endif
                                 @endforeach
                             </select>
                         </div>
 
-                                        @if (count($product->productSpecification) > 0)
-                                            <div class="item_overview">
-                                                <div class="item_overview_title">
-                                                    <h5>Product Specs</h5>
-                                                </div>
-                                                <select class="select_option" name="size" id="sizePrice" onchange="setSizePrice()">
+                        <div class="product-color">
+                            <span class="sub-title">Destination:</span>
+                            <select class="select_option" name="destination_product_details" id="destination_product_details" >
+                                <option value="0" disabled selected> Select Destination </option>
+                                @foreach ($shipping as $shpng)
+                                    <option value="{{$shpng->id}}" >{{$shpng->destination_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                                                    @foreach ($product->productSpecification as $specs)
-                                                    <option value="{{$specs->attribute_description}}" >{{$specs->attribute_name}}</option>
-                                                    @endforeach
-                                                </select>
-
-{{--                                                <table class="table">--}}
-{{--                                                    <tbody>--}}
-{{--                                                        @foreach ($product->productSpecification as $specs)--}}
-{{--                                                            <tr>--}}
-{{--                                                                <th>{{$specs->attribute_name}}</th>--}}
-{{--                                                                <td>{{$specs->attribute_description}}</td>--}}
-{{--                                                            </tr>--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </tbody>--}}
-{{--                                                </table>--}}
-                                            </div>
-                                        @endif
-
+                        <div class="product-color">
+                            <span class="sub-title">Shipping:</span>
+                            <select class="select_option" name="shippig_product_details" id="shippig_product_details" onchange="setShippingPrice()">
+                                <option value="" disabled selected> Select Shipping </option>
+                                    <option value="by_sea" >By Sea</option>
+                                    <option value="by_air" >By Air</option>
+                            </select>
+                        </div>
 
 
                         <div class="product-quantity">
@@ -499,37 +512,56 @@
             var oldPrice = parseInt($('#product_price_old').val());
             var newPrice = 0;
 
-            // alert($('#sizePrice').val());
-            //
-            // alert($('#product_price').text());
+            $('#product_price_size').attr('value', $('#sizePrice').val());
 
-            newPrice = oldPrice + parseInt($('#sizePrice').val());
+            var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );
 
-            $('#product_price').text(newPrice);
+            $('#product_price').text(total);
+        }
+    </script>
 
-            var finalPrice = document.getElementById('product_price').innerText;
+    <script>
+        function setFOBPrice() {
+            var oldPrice = parseInt($('#product_price_old').val());
+            var newPrice = 0;
 
-            alert( finalPrice );
+            $('#product_price_fob').attr('value', $('#fobPrice').val());
 
-            {{--var brand_model_id = $('#sub_model_id').val();--}}
-            {{--if (brand_id != null) {--}}
-            {{--    $.ajax({--}}
-            {{--        url: '{{ url('admin/get/brand/submodelyear') }}/' + brand_model_id,--}}
-            {{--        type: 'GET',--}}
-            {{--        dataType: 'json',--}}
-            {{--    })--}}
-            {{--        .done(function(response) {--}}
-            {{--            console.log(response)--}}
-            {{--            data = '<option value="">Select Year</option>';--}}
-            {{--            selected = '';--}}
-            {{--            $.each(response, function(index, val) {--}}
-            {{--                console.log('ok');--}}
-            {{--                data += '<option value=' + val.id + ' ' + selected + '>' + val.year + '</option>';--}}
-            {{--            });--}}
-            {{--            $('#sub_model_year_id').html(data);--}}
-            {{--        });--}}
+            var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );
 
-            {{--} else {}--}}
+            $('#product_price').text(total);
+        }
+    </script>
+
+    <script>
+        function setShippingPrice() {
+            var destination_id = $('#destination_product_details').val();
+            var method = $('#shippig_product_details').val();
+
+
+            if (destination_id != null) {
+                $.ajax({
+                    url: '{{ url('get/shipping') }}/' + destination_id,
+                    type: 'GET',
+                    dataType: 'json',
+                })
+                    .done(function(response) {
+
+                        if (method === 'by_sea'){
+                            $('#product_price_shipping').attr('value', response[0].by_sea);
+                        }else{
+                            $('#product_price_shipping').attr('value', response[0].by_air);
+                        }
+
+                        var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );
+
+                        $('#product_price').text(total);
+
+                    });
+
+            } else {
+                toastr.warning('Please Select The Destination');
+            }
         }
     </script>
 @endsection
