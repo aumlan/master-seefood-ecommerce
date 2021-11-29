@@ -25,7 +25,7 @@ Route::get('/','Frontend\HomeController@index')->name('welcome');
 Route::get('/product/{id}/{slug?}','Frontend\HomeController@productDetails')->name('product.details');
 
 
-Route::get('/product/add/to/cart/{id}/{qty}/{size}/{type}/{fob}','Frontend\CartController@AddToCart')->name('product.add.to.cart');
+Route::get('/product/add/to/cart/{id}/{qty}/{size}/{type}/{fob}/{product_price}/{destination}/{shipping}','Frontend\CartController@AddToCart')->name('product.add.to.cart');
 
 Route::get('/product/add/to/cart/direct/{id}/{qty}/{rowID}','Frontend\CartController@AddToCartDirect')->name('product.add.to.cart.direct');
 

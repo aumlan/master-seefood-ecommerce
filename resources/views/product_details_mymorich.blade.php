@@ -107,7 +107,7 @@
                             <select class="select_option" name="size" id="sizePrice" onchange="setSizePrice()">
                                 <option value="" disabled selected> Select Size </option>
                                 @foreach ($product->productSpecification as $specs)
-                                    <option value="{{$specs->attribute_description}}" > {{$specs->attribute_name}} - {{$specs->attribute_description}} BDT </option>
+                                    <option value="{{$specs->attribute_description}}" > {{$specs->attribute_name}} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -204,9 +204,12 @@
                             <button class="button-68" class="btn btn-main ms-4"
                                     onclick="addToCart({{ $product->id }},
                                         document.getElementById('quantity_input').value,
-                                        document.getElementById('size').value,
+                                        document.getElementById('product_price').innerText,
+                                        document.getElementById('sizePrice').options[document.getElementById('sizePrice').selectedIndex].text,
                                         document.getElementById('type').value,
-                                        document.getElementById('fob').value)"
+                                        document.getElementById('fobPrice').options[document.getElementById('fobPrice').selectedIndex].text,
+                                        document.getElementById('destination_product_details').options[document.getElementById('destination_product_details').selectedIndex].text,
+                                        document.getElementById('shippig_product_details').options[document.getElementById('shippig_product_details').selectedIndex].text)"
                                 {{ $product->stock_status == 'In_stock' ? '' : 'disabled' }}
                             >
                                 <i class="fas fa-cart-plus"></i>
@@ -563,5 +566,7 @@
                 toastr.warning('Please Select The Destination');
             }
         }
+
     </script>
+
 @endsection

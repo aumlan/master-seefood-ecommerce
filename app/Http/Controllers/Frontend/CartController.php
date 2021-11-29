@@ -11,18 +11,21 @@ use Cart;
 
 class CartController extends Controller
 {
-    public function AddToCart($product_id, $qty=1,$size,$type,$fob){
+    public function AddToCart($product_id, $qty=1,$size,$type,$fob,$product_price,$destination,$shipping){
         // Cart::destroy();
 
         $product = Product::where('id',$product_id)->first();
 
-        if($product->discount_price){
-            $price = $product->discount_price;
-        }else{
-            $price = $product->sales_price_aed;
-        }
+//        if($product->discount_price){
+//            $price = $product->discount_price;
+//        }else{
+//            $price = $product->sales_price_aed;
+//        }
 
-        $cart=Cart::add(['id' =>$product->id, 'name' => $product->name, 'qty' => $qty,'tax'=>0,'price' =>$price,'weight'=>0,'options' => ['image' => $product->productImage[0]->image,'slug'=>$product->slug,'size'=>$size,'type'=>$type,'fob'=>$fob ]]);
+        $price = $product_price;
+
+
+        $cart=Cart::add(['id' =>$product->id, 'name' => $product->name, 'qty' => $qty,'tax'=>0,'price' =>$price,'weight'=>0,'options' => ['image' => $product->productImage[0]->image,'slug'=>$product->slug,'size'=>$size,'type'=>$type,'fob'=>$fob,'destination'=>$destination, 'shipping'=>$shipping ]]);
 
 //        dd($cart);
         return response()->json($cart);

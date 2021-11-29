@@ -11,50 +11,50 @@
     <!-- arrival-Area End-->
 
     <!-- product-Area Start-->
-    <div class="hearo_section">
+    <div class="hearo_section" style="height: 437px">
         <div class="slider owl-carousel" id="single_slider">
             @foreach ($sliders as $slider)
-                <div class="slider_image">
+                <div class="slider_image" style="height: 90%">
                     <img style="object-fit: cover" src="{{asset($slider->image)}}" alt="">
                 </div>
             @endforeach
         </div>
     </div>
 
-    <section class="product-area text-center pd-top-35">
-        <div class="container">
-            <div class="row mb-4 justify-content-center">
-                <div class="col-lg-3">
-                    <div class="section-title fancy-border">
-                        <span class="option_highlight">Brands</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @foreach ($brands as $prd)
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-product-wrap">
-                            <div class="thumb" style="width: 130px; height: 120px;">
-                                <img src="{{ asset($prd->icon) }}" alt="img" width="100px" style="object-fit: contain;width: 100%;height: 100%;}">
+{{--    <section class="product-area text-center pd-top-35">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row mb-4 justify-content-center">--}}
+{{--                <div class="col-lg-3">--}}
+{{--                    <div class="section-title fancy-border">--}}
+{{--                        <span class="option_highlight">Brands</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                @foreach ($brands as $prd)--}}
+{{--                    <div class="col-lg-3 col-sm-6">--}}
+{{--                        <div class="single-product-wrap">--}}
+{{--                            <div class="thumb" style="width: 130px; height: 120px;">--}}
+{{--                                <img src="{{ asset($prd->icon) }}" alt="img" width="100px" style="object-fit: contain;width: 100%;height: 100%;}">--}}
 
-                            </div>
-                            <div class="wrap-details">
-                                <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
-                                <h6><a
-                                        href="{{ route('brand.products', [$prd->id, $prd->name] ) }}">
-                                        <span style="color: #054b74">{{ $prd->name }}</span>
-                                    </a>
-                                </h6>
+{{--                            </div>--}}
+{{--                            <div class="wrap-details">--}}
+{{--                                <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>--}}
+{{--                                <h6><a--}}
+{{--                                        href="{{ route('brand.products', [$prd->id, $prd->name] ) }}">--}}
+{{--                                        <span style="color: #054b74">{{ $prd->name }}</span>--}}
+{{--                                    </a>--}}
+{{--                                </h6>--}}
 
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
 
-            </div>
-        </div>
-    </section>
-    <hr style="width: 75%">
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <hr style="width: 75%">--}}
 
     <!-- arrival-Area Start-->
     <section class="product-area text-center pd-top-35">

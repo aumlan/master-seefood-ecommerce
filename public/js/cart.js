@@ -8,10 +8,9 @@ $(document).ready(function () {
     };
 })
 
-function addToCart(product_id,qty,size,type,fob) {
-    alert('added cart');
-    console.log(product_id+ ' '+ type);
-    fetch('/product/add/to/cart/' + product_id +'/'+ qty +'/'+ size +'/'+ type +'/'+ fob)
+function addToCart(product_id,qty,price,size,type,fob,destination,shipping) {
+    // console.log(product_id+'-'+price+'-'+size+'-'+type+'-'+fob+'-'+destination+'-'+shipping);
+    fetch('/product/add/to/cart/' + product_id +'/'+ qty +'/'+ size +'/'+ type +'/'+ fob +'/'+ price +'/'+destination +'/'+ shipping)
         .then(response => response.json())
         .then(data=> console.log(data) )
         .then(data => TotalCart());
