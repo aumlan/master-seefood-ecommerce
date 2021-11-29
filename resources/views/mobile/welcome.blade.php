@@ -61,22 +61,12 @@
                             </div>
                             <div class="mobileCardDetails">
                                 <div class="d-flex justify-content-between">
-
-                                    @if ($product->discount_price)
-                                        <del>
-                                            <p class="mb-0 font-weight-bold" style="color: #8a8a8a">AED
-                                                {{ $product->sales_price }}</p>
-                                        </del>
-                                        <p class="mb-0 font-weight-bold template_primary_color">AED
-                                            {{ $product->discount_price }}</p>
+                                    @if($currencies->selected_currency == 'usd')
+                                        <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price_usd }}</p>
+                                    @elseif($currencies->selected_currency == 'yen')
+                                        <p class="mb-0 font-weight-bold template_primary_color">¥ {{ $product->sales_price_yen }}</p>
                                     @else
-                                        @if($currencies->selected_currency == 'usd')
-                                            <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price }}</p>
-                                        @elseif($currencies->selected_currency == 'euro')
-                                            <p class="mb-0 font-weight-bold template_primary_color">€ {{ $product->sales_price_euro }}</p>
-                                        @elseif($currencies->selected_currency == 'aed')
-                                            <p class="mb-0 font-weight-bold template_primary_color">AED {{ $product->sales_price_aed }}</p>
-                                        @endif
+                                        <p class="mb-0 font-weight-bold template_primary_color">BDT {{ $product->sales_price_aed }}</p>
                                     @endif
                                 </div>
                                 <p class="template_dark_color font-weight-bold">
@@ -111,17 +101,14 @@
                             </div>
                             <div class="mobileCardDetails">
                                 <div class="d-flex justify-content-between">
-
-                                    @if ($product->discount_price)
-                                        <del>
-                                            <p class="mb-0 font-weight-bold" style="color: #8a8a8a">AED
-                                                {{ $product->sales_price_aed }}</p>
-                                        </del>
-                                        <p class="mb-0 font-weight-bold template_primary_color">AED
-                                            {{ $product->discount_price }}</p>
+                                    @if($currencies->selected_currency == 'usd')
+                                        <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price_usd }}</p>
+                                    @elseif($currencies->selected_currency == 'yen')
+                                        <p class="mb-0 font-weight-bold template_primary_color">¥ {{ $product->sales_price_yen }}</p>
                                     @else
-                                        <p class="mb-0 font-weight-bold template_primary_color">AED {{ $product->sales_price_aed }}</p>
+                                        <p class="mb-0 font-weight-bold template_primary_color">BDT {{ $product->sales_price_aed }}</p>
                                     @endif
+
                                 </div>
                                 <p class="template_dark_color font-weight-bold">
                                     {{ Str::limit($product->name, 15, '...') }}</p>
@@ -159,17 +146,12 @@
                             </div>
                             <div class="mobileCardDetails">
                                 <div class="d-flex justify-content-between">
-
-                                    @if ($product->discount_price)
-                                        <del>
-                                            <p class="mb-0 font-weight-bold" style="color: #8a8a8a">AED
-                                                {{ $product->sales_price }}</p>
-                                        </del>
-                                        <p class="mb-0 font-weight-bold template_primary_color">AED
-                                            {{ $product->discount_price }}</p>
+                                    @if($currencies->selected_currency == 'usd')
+                                        <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price_usd }}</p>
+                                    @elseif($currencies->selected_currency == 'yen')
+                                        <p class="mb-0 font-weight-bold template_primary_color">¥ {{ $product->sales_price_yen }}</p>
                                     @else
-                                        <p class="mb-0 font-weight-bold template_primary_color">AED
-                                            {{ $product->sales_price }}</p>
+                                        <p class="mb-0 font-weight-bold template_primary_color">BDT {{ $product->sales_price_aed }}</p>
                                     @endif
                                 </div>
                                 <p class="template_dark_color font-weight-bold">
@@ -204,21 +186,12 @@
                     <div class="mobileCardDetails">
                         <div class="d-flex justify-content-between">
 
-                            @if ($product->discount_price)
-                                <del>
-                                    <p class="mb-0 font-weight-bold" style="color: #8a8a8a">AED
-                                        {{ $product->sales_price }}</p>
-                                </del>
-                                <p class="mb-0 font-weight-bold template_primary_color">AED
-                                    {{ $product->discount_price }}</p>
+                            @if($currencies->selected_currency == 'usd')
+                                <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price_usd }}</p>
+                            @elseif($currencies->selected_currency == 'yen')
+                                <p class="mb-0 font-weight-bold template_primary_color">¥ {{ $product->sales_price_yen }}</p>
                             @else
-                                @if($currencies->selected_currency == 'usd')
-                                    <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price }}</p>
-                                @elseif($currencies->selected_currency == 'euro')
-                                    <p class="mb-0 font-weight-bold template_primary_color">€ {{ $product->sales_price_euro }}</p>
-                                @elseif($currencies->selected_currency == 'aed')
-                                    <p class="mb-0 font-weight-bold template_primary_color">AED {{ $product->sales_price_aed }}</p>
-                                @endif
+                                <p class="mb-0 font-weight-bold template_primary_color">BDT {{ $product->sales_price_aed }}</p>
                             @endif
                         </div>
                         <p class="template_dark_color font-weight-bold">

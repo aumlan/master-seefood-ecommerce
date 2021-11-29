@@ -25,9 +25,19 @@
                                href="{{ route('product.details', [$product->id, $product->options->slug]) }}">
                                 <div class="cart_info">
                                     <p class="product_name">{{ $product->name }}</p>
-                                    <p class="productPrice"> {{ $product->price }} AED</p>
+                                    <p class="productPrice">
+                                        @if($currencies->selected_currency == 'usd')
+                                            $ {{ $product->price }}
+                                        @elseif($currencies->selected_currency == 'yen')
+                                            ¥ {{ $product->price }}
+                                        @else
+                                            BDT {{ $product->price }}
+                                        @endif
+                                    </p>
                                     <p >Size: <strong> {{ $product->options->size }} </strong></p>
-                                    <p >Color: <strong> {{ $product->options->color }} </strong></p>
+                                    <p >Type: <strong> {{ $product->options->type }} </strong></p>
+                                    <p >Destination: <strong> {{ $product->options->destination }} </strong></p>
+                                    <p >Shipping: <strong> {{ $product->options->shipping }} </strong></p>
                                     <p >Quantity: <strong> {{ $product->qty }} </strong></p>
                                 </div>
                             </a>

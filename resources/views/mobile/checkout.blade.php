@@ -253,14 +253,32 @@
                                             <small class="text-muted">Quantity: <strong>{{ $item->qty }}</strong> </small>
                                         </div>
                                         <div>
-                                            <span class="text-muted"><strong>AED {{ $item->qty * $item->price  }} </strong></span>
+                                            <span class="text-muted"><strong>
+                                                    @if($currencies->selected_currency == 'usd')
+                                                        $ {{ $item->qty * $item->price  }}
+                                                    @elseif($currencies->selected_currency == 'yen')
+                                                        ¥ {{ $item->qty * $item->price  }}
+                                                    @else
+                                                        BDT {{ $item->qty * $item->price  }}
+                                                    @endif
+                                                </strong></span>
                                         </div>
 
                                     </li>
                                 @endforeach
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span class="font-weight-bold">Total </span>
-                                    <strong>AED <span id="after_coupon"> {{ $sub_total }} </span>  </strong>
+                                    <strong>
+
+                                        @if($currencies->selected_currency == 'usd')
+                                            $ <span id="after_coupon"> {{ $sub_total }} </span>
+                                        @elseif($currencies->selected_currency == 'yen')
+                                            ¥ <span id="after_coupon"> {{ $sub_total }} </span>
+                                        @else
+                                            BDT <span id="after_coupon"> {{ $sub_total }} </span>
+                                        @endif
+
+                                    </strong>
                                 </li>
                             </ul>
 

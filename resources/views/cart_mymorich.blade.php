@@ -65,7 +65,13 @@
                                         </td>
                                         <td>
                                             <div class="cart_price">
-                                                {{ $product->price }} AED
+                                                @if($currencies->selected_currency == 'usd')
+                                                    $ {{ $product->price }}
+                                                @elseif($currencies->selected_currency == 'yen')
+                                                    ¥ {{ $product->price }}
+                                                @else
+                                                    BDT {{ $product->price }}
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
@@ -98,7 +104,14 @@
                                         <td>
                                             <div class="cart_price cart_price_subtotal{{ $product->id }}">
 
-                                                {{ $product->subtotal() }} AED
+
+                                                @if($currencies->selected_currency == 'usd')
+                                                    $ {{ $product->subtotal() }}
+                                                @elseif($currencies->selected_currency == 'yen')
+                                                    ¥ {{ $product->subtotal() }}
+                                                @else
+                                                    BDT {{ $product->subtotal() }}
+                                                @endif
 
                                             </div>
                                         </td>
@@ -122,7 +135,13 @@
                                     </th>
                                     <th scope="col" class="text-center">Subtotal</th>
                                     <th scope="col" class="cart_total_price">
-                                        {{ $product->total() }} AED
+                                        @if($currencies->selected_currency == 'usd')
+                                            $ {{ $product->total() }}
+                                        @elseif($currencies->selected_currency == 'yen')
+                                            ¥ {{ $product->total() }}
+                                        @else
+                                            BDT {{ $product->total() }}
+                                        @endif
                                     </th>
                                     <th >
 
