@@ -142,6 +142,8 @@ class CartController extends Controller
 //                'color' => $product['options']['color'],
                 'type' => $product['options']['type'],
                 'fob' => $product['options']['fob'],
+                'destination' => $product['options']['destination'],
+                'shipping' => $product['options']['shipping'],
 
             ]);
         }
