@@ -8,6 +8,7 @@ use App\Models\ConfigureAttribute;
 use App\Models\Manufacture;
 use App\Models\Product;
 use App\Models\Slider;
+use App\Models\SubCategory;
 use Jenssegers\Agent\Agent;
 
 function products(){
@@ -17,6 +18,9 @@ function products(){
 
 function Category(){
     return Category::all();
+}
+function SubCategory($id){
+    return SubCategory::where('category_id',$id)->get();
 }
 
 function Brand(){

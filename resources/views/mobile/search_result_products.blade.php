@@ -43,7 +43,7 @@
                                         @if (count($product->productImage) > 0)
                                             <img class="card-img-top"
                                                  src="{{ thumbnail($product->productImage[0]->image) }}"
-                                                 alt="Card image cap">
+                                                 style="height: 200px;width: 100%;object-fit: contain;">
                                     @endif
                                 </a>
                                 <div class="card-body p-1">

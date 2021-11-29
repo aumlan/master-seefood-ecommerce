@@ -174,16 +174,16 @@
                         <div class="menu">
                             <nav>
                                 <ul>
-                                    {{--                                    <li class="active"><a href="#">All</a></li>--}}
-                                    {{-- @foreach (CarTypes() as $menu)
-                                        <li class="active"><a href="{{route('car.search.by.car_type_id',$menu->id)}}">{{$menu->name}}</a></li>
-                                    @endforeach --}}
+{{--                                                                        <li class="active"><a href="#">All</a></li>--}}
+{{--                                     @foreach (CarTypes() as $menu)--}}
+{{--                                        <li class="active"><a href="{{route('car.search.by.car_type_id',$menu->id)}}">{{$menu->name}}</a></li>--}}
+{{--                                    @endforeach --}}
 {{--                                    <li class="text-uppercase static">--}}
 {{--                                        <a href="#">Car Brands</a>--}}
 {{--                                        <div class="mega-menu mega-full">--}}
 {{--                                            <div class="popular_brand_list">--}}
 {{--                                                @foreach (Brand() as $brand)--}}
-{{--                                                    --}}{{-- <a href="{{ route('car.by.brand', $brand->id) }}"> --}}
+{{--                                                     <a href="{{ route('car.by.brand', $brand->id) }}"> --}}
 {{--                                                    <a style="margin-bottom: 10px" href={{ route('brand.products', [$brand->id, $brand->name] ) }} >--}}
 {{--                                                        <div class="brand">--}}
 {{--                                                            <div class="brandIcon">--}}
@@ -225,7 +225,6 @@
 {{--                                        <div class="mega-menu mega-full">--}}
 {{--                                            <div class="popular_brand_list">--}}
 {{--                                                @foreach (Category() as $category)--}}
-{{--                                                    --}}{{-- <a href="{{ route('car.by.brand', $brand->id) }}"> --}}
 {{--                                                    <a style="margin-bottom: 10px" href={{ route('category.products', [$category->id, $category->name] ) }} >--}}
 {{--                                                        <div class="brand">--}}
 {{--                                                            <div class="brandIcon">--}}
@@ -241,14 +240,35 @@
 {{--                                        </div>--}}
 
 {{--                                    </li>--}}
+                                    @foreach($global_categories as $category)
+                                        <li class=" text-uppercase static">
+                                            <a href={{ route('category.products', [$category->id, $category->name] ) }}>{{$category->name}}</a>
+                                            <div class="mega-menu mega-full">
+                                                <div class="popular_brand_list">
+                                                    @foreach (SubCategory($category->id) as $category)
+                                                        <a style="margin-bottom: 10px" href={{ route('category.products', [$category->id, $category->name] ) }} >
+                                                            <div class="brand">
+                                                                <div class="brandIcon">
+                                                                    <img src="{{ asset($category->icon) }}" alt="" srcset="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="brandName">
+                                                                <p>{{ $category->name }}</p>
+                                                            </div>
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
 {{--                                    <li class=" text-uppercase mr-3"><a href={{ route('welcome') }}> Home </a></li>--}}
 {{--                                    <li class=" text-uppercase mr-3"><a href={{ route('terms.about') }}> About Us </a></li>--}}
 
-                                    @foreach($global_categories as $category)
-                                        <li class=" text-uppercase mr-3">
-                                            <a href={{ route('category.products', [$category->id, $category->name] ) }}> {{ $category->name }} </a>
-                                        </li>
-                                    @endforeach
+{{--                                    @foreach($global_categories as $category)--}}
+{{--                                        <li class=" text-uppercase mr-3">--}}
+{{--                                            <a href={{ route('category.products', [$category->id, $category->name] ) }}> {{ $category->name }} </a>--}}
+{{--                                        </li>--}}
+{{--                                    @endforeach--}}
 
 
 

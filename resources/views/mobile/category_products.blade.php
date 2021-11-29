@@ -52,22 +52,19 @@
                                         @if (count($product->productImage) > 0)
                                             <img class="card-img-top"
                                                  src="{{ thumbnail($product->productImage[0]->image) }}"
-                                                 alt="Card image cap">
+                                                 style="height: 200px;width: 100%;object-fit: contain;">
                                     @endif
                                 </a>
                                 <div class="card-body p-1">
                                     <div class=" d-flex justify-content-between">
                                         <div class="mobileCardDetails w-100">
                                             <div class="d-flex justify-content-between">
-                                                @if ($product->discount_price)
-                                                    <del>
-                                                        <p class="mb-0 font-weight-bold" style="color: #8a8a8a">AED
-                                                            {{ $product->sales_price_aed }}</p>
-                                                    </del>
-                                                    <p class="mb-0 font-weight-bold template_primary_color">AED
-                                                        {{ $product->discount_price }}</p>
+                                                @if($currencies->selected_currency == 'usd')
+                                                    <p class="mb-0 font-weight-bold template_primary_color">$ {{ $product->sales_price_usd }}</p>
+                                                @elseif($currencies->selected_currency == 'yen')
+                                                    <p class="mb-0 font-weight-bold template_primary_color">¥ {{ $product->sales_price_yen }}</p>
                                                 @else
-                                                    <p class="mb-0 font-weight-bold template_primary_color">AED {{ $product->sales_price_aed }}</p>
+                                                    <p class="mb-0 font-weight-bold template_primary_color">BDT {{ $product->sales_price_aed }}</p>
                                                 @endif
                                             </div>
                                             <p class="template_dark_color font-weight-bold">
