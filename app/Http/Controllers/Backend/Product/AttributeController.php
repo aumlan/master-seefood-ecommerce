@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\ConfigureAttribute;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
@@ -38,6 +39,7 @@ class AttributeController extends Controller
     }
 
     public function configure($id){
+
       $attribute = Attribute::find($id);
        $configure= ConfigureAttribute::where('attribute_id',$id)->get();
         return view('Backend.product.attribute_configure.configure',compact('attribute','configure'));
@@ -65,6 +67,33 @@ class AttributeController extends Controller
         $attribute = Attribute::find($id);
         $configure= ConfigureAttribute::where('attribute_id',$id)->get();
         return view('Backend.product.attribute_configure.configure',compact('attribute','configure'));
+    }
+
+    public function shipping_index(){
+        $attribute = ConfigureAttribute::where('attribute_id',5)->get();
+        $configure= Shipping::all();
+        return view('Backend.product.attribute_configure.shipping',compact('attribute','configure'));
+    }
+
+    public function shipping_store(Request $request){
+        $request->validate([
+            'destination'=>'required',
+        ]);
+        $charge_sea = 0;
+        $charge_air = 0;
+        if($request->charge_sea){
+            $charge_sea = $request->charge_sea;
+        }
+        if($request->charge_air){
+            $charge_air = $request->charge_air;
+        }
+
+        Shipping::create([
+            'destination_name'=>$request->destination,
+            'by_sea'=>$charge_sea,
+            'by_air'=>$charge_air,
+        ]);
+        return back();
     }
 
     public function configureStore(Request $request,$attibute_id){

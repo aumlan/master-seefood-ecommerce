@@ -112,6 +112,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Backend','as'=>'admin.','middl
     Route::get('/product/attribute/configure/4','Product\AttributeController@fob')->name('product.attribute.configure.fob');
     Route::get('/product/attribute/configure/5','Product\AttributeController@destination')->name('product.attribute.configure.destination');
 
+    Route::get('/product/shipping','Product\AttributeController@shipping_index')->name('shipping');
+    Route::post('/product/shipping/store','Product\AttributeController@shipping_store')->name('shipping.store');
+
 
     //Frontend Settings
     Route::get('/settings/frontend-settings/social-settings','Settings\SocialSettingsController@index')->name('settings.frontend-settings.social-settings');
