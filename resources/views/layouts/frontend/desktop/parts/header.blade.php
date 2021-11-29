@@ -245,15 +245,15 @@
                                             <a href={{ route('category.products', [$category->id, $category->name] ) }}>{{$category->name}}</a>
                                             <div class="mega-menu mega-full">
                                                 <div class="popular_brand_list">
-                                                    @foreach (SubCategory($category->id) as $category)
-                                                        <a style="margin-bottom: 10px" href={{ route('category.products', [$category->id, $category->name] ) }} >
+                                                    @foreach (SubCategory($category->id) as $sub_category)
+                                                        <a style="margin-bottom: 10px" href={{ route('sub.category.products', [$sub_category->id, $sub_category->name] ) }} >
                                                             <div class="brand">
                                                                 <div class="brandIcon">
-                                                                    <img src="{{ asset($category->icon) }}" alt="" srcset="">
+                                                                    <img src="{{ asset($sub_category->icon) }}" alt="" srcset="">
                                                                 </div>
                                                             </div>
                                                             <div class="brandName">
-                                                                <p>{{ $category->name }}</p>
+                                                                <p>{{ $sub_category->name }}</p>
                                                             </div>
                                                         </a>
                                                     @endforeach

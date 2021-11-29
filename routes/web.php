@@ -83,6 +83,7 @@ Route::get('/get/brand/submodelyear/{id}',[ HomeController::class,'getSubModelYe
 Route::get('/search-filter',[ HomeController::class,'search_filter'])->name('search.filter');
 
 Route::get('/category/{id}/{slug}',[ UserController::class,'category_products'])->name('category.products');
+Route::get('/sub-category/{id}/{slug}',[ UserController::class,'sub_category_products'])->name('sub.category.products');
 
 Route::get('/manufacturers/{id}/{slug}',[ UserController::class,'manufacturers_products'])->name('manufacturers.products');
 

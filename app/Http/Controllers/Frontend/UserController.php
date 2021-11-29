@@ -9,6 +9,7 @@ use App\Models\Coupon;
 use App\Models\Manufacture;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -101,6 +102,24 @@ class UserController extends Controller
 
 
     }
+
+    public function sub_category_products($category_id, $slug)
+    {
+        $products = Product::with('productImage', 'category','brand')
+            ->where('sub_category_id', $category_id)
+            ->get();
+
+        $category = SubCategory::find($category_id);
+
+        if(!MoBileView()){
+            return view('sub_category_products', compact('products','category'));
+        }else{
+            return view('mobile.sub_category_products', compact('products','category'));
+        }
+
+
+    }
+
 
     public function manufacturers_products($manufacturers_id, $slug)
     {
