@@ -83,10 +83,16 @@
                             <span><i class="la la-star"></i></span>
                         </div> --}}
                         <div class="price">
-                            @if($product->discount_price > 0)
-                                BDT <span id="product_price">{{ $product->discount_price }} </span>
-                                <input type="hidden" id="product_price_old" value="{{ $product->discount_price }}"/>
-                                <del style="font-size: 15px"> {{ $product->sales_price_aed }}</del>
+
+                            <input type="hidden" id="currect_currency" value="{{ $currency->selected_currency }}"/>
+
+                            @if($currencies->selected_currency == 'usd')
+                                $ <span id="product_price">{{ $product->sales_price_usd }} </span>
+                                <input type="hidden" id="product_price_old" value="{{ $product->sales_price_usd }}"/>
+
+                            @elseif($currencies->selected_currency == 'yen')
+                                ¥ <span id="product_price">{{ $product->sales_price_yen }} </span>
+                                <input type="hidden" id="product_price_old" value="{{ $product->sales_price_yen }}"/>
                             @else
                                 BDT <span id="product_price">{{ $product->sales_price_aed }} </span>
                                 <input type="hidden" id="product_price_old" value="{{ $product->sales_price_aed }}"/>
@@ -154,8 +160,21 @@
                             </select>
                         </div>
 
-                        <div class="product-color">
-                            <span class="sub-title">FOB:</span>
+                        <div class="product-quantity">
+                            <span class="sub-title">Qty:</span>
+                            <form>
+                                <div class="quantity buttons_added">
+                                    <input type="button" value="-" class="minus">
+                                    <input type="number" class="input-text qty text" step="1" min="1" max="10000"
+                                           name="quantity" value="1" id="quantity_input">
+                                    <input type="button" value="+" class="plus">
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="product-color" style="display: none">
+{{--                            <span class="sub-title">FOB:</span>--}}
                             <select class="select_option" name="fobPrice" id="fobPrice" onchange="setFOBPrice()">
                                 <option value="" disabled selected> Select FOB </option>
                                 @foreach ($product->product_attr as $atrr)
@@ -189,17 +208,7 @@
                         </div>
 
 
-                        <div class="product-quantity">
-                            <span class="sub-title">Qty:</span>
-                            <form>
-                                <div class="quantity buttons_added">
-                                    <input type="button" value="-" class="minus">
-                                    <input type="number" class="input-text qty text" step="1" min="1" max="10000"
-                                           name="quantity" value="1" id="quantity_input">
-                                    <input type="button" value="+" class="plus">
-                                </div>
-                            </form>
-                        </div>
+
                         <div class="my-3">
                             <button class="button-68" class="btn btn-main ms-4"
                                     onclick="addToCart({{ $product->id }},
@@ -512,32 +521,40 @@
 
     <script>
         function setSizePrice() {
+            var currency = $('#currect_currency').val() ;
             var oldPrice = parseInt($('#product_price_old').val());
             var newPrice = 0;
 
-            $('#product_price_size').attr('value', $('#sizePrice').val());
+            if (currency=== 'usd'){
+                $('#product_price_size').attr('value', ($('#sizePrice').val() * 0.012).toFixed(2) );
+            }else if (currency=== 'yen'){
+                $('#product_price_size').attr('value', ($('#sizePrice').val() * 1.33).toFixed(2)  );
+            } else{
+                $('#product_price_size').attr('value', $('#sizePrice').val());
+            }
 
-            var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );
+            var total=parseFloat($('#product_price_old').val()) + parseFloat( $('#product_price_shipping').val() ) + parseFloat( $('#product_price_fob').val() ) + parseFloat( $('#product_price_size').val() );
 
-            $('#product_price').text(total);
+            $('#product_price').text(total.toFixed(2));
         }
     </script>
 
-    <script>
-        function setFOBPrice() {
-            var oldPrice = parseInt($('#product_price_old').val());
-            var newPrice = 0;
+{{--    <script>--}}
+{{--        function setFOBPrice() {--}}
+{{--            var oldPrice = parseInt($('#product_price_old').val());--}}
+{{--            var newPrice = 0;--}}
 
-            $('#product_price_fob').attr('value', $('#fobPrice').val());
+{{--            $('#product_price_fob').attr('value', $('#fobPrice').val());--}}
 
-            var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );
+{{--            var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );--}}
 
-            $('#product_price').text(total);
-        }
-    </script>
+{{--            $('#product_price').text(total);--}}
+{{--        }--}}
+{{--    </script>--}}
 
     <script>
         function setShippingPrice() {
+            var currency = $('#currect_currency').val() ;
             var destination_id = $('#destination_product_details').val();
             var method = $('#shippig_product_details').val();
 
@@ -551,14 +568,31 @@
                     .done(function(response) {
 
                         if (method === 'by_sea'){
-                            $('#product_price_shipping').attr('value', response[0].by_sea);
+
+                            if (currency=== 'usd'){
+                                $('#product_price_shipping').attr('value', (response[0].by_sea * 0.012).toFixed(2) );
+                            }else if (currency=== 'yen'){
+                                $('#product_price_shipping').attr('value', (response[0].by_sea * 1.33).toFixed(2)  );
+                            } else{
+                                $('#product_price_shipping').attr('value', response[0].by_sea);
+                            }
+
+                            // $('#product_price_shipping').attr('value', response[0].by_sea);
                         }else{
-                            $('#product_price_shipping').attr('value', response[0].by_air);
+                            if (currency=== 'usd'){
+                                $('#product_price_shipping').attr('value', (response[0].by_air * 0.012).toFixed(2) );
+                            }else if (currency=== 'yen'){
+                                $('#product_price_shipping').attr('value', (response[0].by_air * 1.33).toFixed(2)  );
+                            } else{
+                                $('#product_price_shipping').attr('value', response[0].by_air);
+                            }
+
+                            // $('#product_price_shipping').attr('value', response[0].by_air);
                         }
 
-                        var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );
+                        var total=parseFloat($('#product_price_old').val()) + parseFloat( $('#product_price_shipping').val() ) + parseFloat( $('#product_price_fob').val() ) + parseFloat( $('#product_price_size').val() );
 
-                        $('#product_price').text(total);
+                        $('#product_price').text(total.toFixed(2));
 
                     });
 

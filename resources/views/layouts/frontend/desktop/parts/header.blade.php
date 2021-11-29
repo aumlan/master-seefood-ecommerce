@@ -28,52 +28,61 @@
                 </div>
 
                 <div class="top-header-right-side d-flex">
-                    <div ><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="ml-2 mr-2"><a href="{{ route('contact') }}"><p style="font-size: 13px;color: black">Store Location</p></a></div>
+{{--                    <div ><i class="fas fa-map-marker-alt"></i></div>--}}
+{{--                    <div class="ml-2 mr-2"><a href="{{ route('contact') }}"><p style="font-size: 13px;color: black">Store Location</p></a></div>--}}
                     <div style="border-right: 1px solid #B6B8B9"></div>
                     <div ><i class="fas fa-user"></i></div>
                     <div class="ml-2"> <a href="{{ route('login') }}"><p style="font-size: 13px; color: black">Register or Sign in</p> </a> </div>
 
-                    <div class="ml-2">
+                    <div class="ml-2 mr-5">
                         <ul class="nav navbar-nav float-right" style="font-size: 13px">
                             <li class="dropdown dropdown-currency nav-item">
                                 <a class="dropdown-toggle nav-link text-dark" id="dropdown-money" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                     @if($currencies->selected_currency == 'usd')
-                                        <ion-icon name="logo-usd"></ion-icon><span class="selected-currency font_13"> USD</span>
+                                        <ion-icon name="logo-usd" ></ion-icon><span class="selected-currency font_13"> USD</span>
+                                    @elseif($currencies->selected_currency == 'bdt')
+                                        <i class="fas fa-lira-sign"></i><span class="selected-currency font_13"> BDT</span>
                                     @else
-                                        <ion-icon name="logo-euro"></ion-icon><span class="selected-currency font_13"> EURO</span>
+                                        <ion-icon name="logo-yen" ></ion-icon><span class="selected-currency font_13"> CYN</span>
                                     @endif
 
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdown-money">
+                                    <a class="dropdown-item" href={{ route('currency.selected_currency_update','bdt') }} data-currency="bdt">
+                                        <i class="fas fa-lira-sign"></i>
+                                        <span class="font_13">BDT</span> </a>
                                     <a class="dropdown-item" href={{ route('currency.selected_currency_update','usd') }} data-currency="usd"><ion-icon name="logo-usd"></ion-icon> <span class="font_13">USD</span> </a>
-                                    <a class="dropdown-item" href={{ route('currency.selected_currency_update','euro') }} data-currency="euro"><ion-icon name="logo-euro"></ion-icon> <span class="font_13">EURO</span> </a>
+                                    <a class="dropdown-item" href={{ route('currency.selected_currency_update','yen') }} data-currency="yen">
+                                        <ion-icon name="logo-yen"></ion-icon>
+                                        <span class="font_13">CYN</span>
+                                    </a>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="ml-2">
-                        <ul class="nav navbar-nav float-right" style="font-size: 13px">
-                            <li class="dropdown dropdown-language nav-item">
-                                <a class="dropdown-toggle nav-link text-dark" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+{{--                    <div class="ml-2">--}}
+{{--                        <ul class="nav navbar-nav float-right" style="font-size: 13px">--}}
+{{--                            <li class="dropdown dropdown-language nav-item">--}}
+{{--                                <a class="dropdown-toggle nav-link text-dark" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 
-                                    @if($currencies->selected_language == 'ar')
-                                        <i class="flag-icon flag-icon-ara"></i><span class="selected-language font_13">Arabic</span>
-                                    @else
-                                        <i class="flag-icon flag-icon-us"></i><span class="selected-language font_13">English</span>
-                                    @endif
+{{--                                    @if($currencies->selected_language == 'ar')--}}
+{{--                                        <i class="flag-icon flag-icon-ara"></i><span class="selected-language font_13">Arabic</span>--}}
+{{--                                    @else--}}
+{{--                                        <i class="flag-icon flag-icon-us"></i><span class="selected-language font_13">English</span>--}}
+{{--                                    @endif--}}
 
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-                                    <a class="dropdown-item text-dark" href={{ route('currency.selected_language_update','en') }} data-language="en"><i class="flag-icon flag-icon-us"></i><span class="font_13">English</span>  </a>
-                                    <a class="dropdown-item text-dark" href={{ route('currency.selected_language_update','ar') }} data-language="fr"><i class="flag-icon flag-icon-ara"></i><span class="font_13">Arabic</span>  </a>
-                                </div>
-                            </li>
-                        </ul>
+{{--                                </a>--}}
+{{--                                --}}
+{{--                                <div class="dropdown-menu" aria-labelledby="dropdown-flag">--}}
+{{--                                    <a class="dropdown-item text-dark" href={{ route('currency.selected_language_update','en') }} data-language="en"><i class="flag-icon flag-icon-us"></i><span class="font_13">English</span>  </a>--}}
+{{--                                    <a class="dropdown-item text-dark" href={{ route('currency.selected_language_update','ar') }} data-language="fr"><i class="flag-icon flag-icon-ara"></i><span class="font_13">Arabic</span>  </a>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
 
-                    </div>
+{{--                    </div>--}}
 
                 </div>
 

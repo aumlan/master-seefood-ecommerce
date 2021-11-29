@@ -83,23 +83,28 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabVerticalLeft1" role="tabpanel"
                                     aria-labelledby="baseVerticalLeft-tab1">
-                                    <label for="product_name">Regular Price (BDT)</label>
+                                    <label for="product_name"> Price (BDT)</label>
                                     <div class="form-group">
                                         <div class="row d-flex">
                                             <div class="col-md-12" >
                                                 <input class="form-control" type="number" id="sale_price_aed" name="sales_price_aed"
-                                                                          placeholder=""></div>
+                                                                          placeholder="">
+                                                <input type="hidden" id="sale_price_usd" name="sales_price_usd" >
+                                                <input type="hidden" id="sale_price_yen" name="sales_price_yen" >
+
+                                            </div>
+
                                         </div>
                                     </div>
 
-                                    <label for="product_name">Discount Price (BDT)</label>
-                                    <div class="form-group">
-                                        <div class="row d-flex">
-                                            <div class="col-md-12" >
-                                                <input class="form-control" type="number" id="discount_price" name="discount_price"
-                                                       placeholder=""></div>
-                                        </div>
-                                    </div>
+{{--                                    <label for="product_name">Discount Price (BDT)</label>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <div class="row d-flex">--}}
+{{--                                            <div class="col-md-12" >--}}
+{{--                                                <input class="form-control" type="number" id="discount_price" name="discount_price"--}}
+{{--                                                       placeholder=""></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
 {{--                                    Dicount Price of Product--}}
 {{--                                    <label for="product_name">Discount Price (AED)</label>--}}
@@ -536,15 +541,15 @@
         $('#sale_price_aed').keyup(function() {
             let aed_input = $('#sale_price_aed').val();
             let dollar_currency = {{ $currency->dollar }};
-            let euro_currency = {{ $currency->euro }};
+            let euro_currency = {{ $currency->euro }}; // currency->euro = chines Yen
 
             // alert(dollar_currency + 'hh' + euro_currency);
 
-            let dollar = parseFloat((aed_input * dollar_currency) + ((5/100) * (aed_input * dollar_currency))).toFixed(2) ;
-            let euro = parseFloat((aed_input * euro_currency) + ((5/100) * (aed_input * euro_currency))).toFixed(2);
+            let dollar = parseFloat((aed_input * dollar_currency)).toFixed(2) ;
+            let yen = parseFloat((aed_input * euro_currency)).toFixed(2);
 
-            $('#sale_price_dollar').val(dollar);
-            $('#sale_price_euro').val(euro);
+            $('#sale_price_usd').val(dollar);
+            $('#sale_price_yen').val(yen);
         });
     </script>
 

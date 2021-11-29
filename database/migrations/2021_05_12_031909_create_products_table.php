@@ -22,8 +22,8 @@ class CreateProductsTable extends Migration
             $table->boolean('is_published')->default(1);
             $table->string('discount_price')->nullable();
             $table->string('purchase_price')->nullable();
-            $table->string('sales_price')->nullable();
-            $table->string('sales_price_euro')->nullable();
+            $table->string('sales_price_yen')->nullable();
+            $table->string('sales_price_usd')->nullable();
             $table->string('tax')->nullable();
             $table->integer('manufacture_id')->nullable();
             $table->string('sku')->nullable();

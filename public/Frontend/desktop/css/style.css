@@ -2034,9 +2034,9 @@ a:hover {
 }
 
 .navbar-nav {
-  opacity: 0;
+  opacity: 1;
   margin-right: -30px;
-  visibility: hidden;
+  /*visibility: hidden;*/
   transition: all 0.3s ease 0s;
 }
 
@@ -3578,4 +3578,7 @@ footer p {
     /*background-color: #DBA514;*/
     border-radius: 5px;
     line-height: 25px;
+}
+.font_13{
+    font-size: 13px !important;
 }

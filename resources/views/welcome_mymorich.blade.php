@@ -99,8 +99,15 @@
                                     <span><i class="la la-star"></i></span>
                                     <span><i class="la la-star"></i></span>
                                 </div>
-                                <span
-                                    class="price">AED{{ $prd->sales_price_aed }}</span>
+{{--                                <span class="price">AED{{ $prd->sales_price_aed }}</span>--}}
+                                    @if($currencies->selected_currency == 'usd')
+                                        <span class="price">$ {{ $prd->sales_price_usd }}</span>
+                                    @elseif($currencies->selected_currency == 'yen')
+                                        <span class="price">¥ {{ $prd->sales_price_yen }}</span>
+                                    @else
+                                        <span class="price">BDT {{ $prd->sales_price_aed }}</span>
+                                    @endif
+
                             </div>
                         </div>
                     </div>
@@ -153,9 +160,13 @@
                                         <span><i class="la la-star"></i></span>
                                         <span><i class="la la-star"></i></span>
                                     </div>
-                                    <span
-                                        class="price">AED{{ $prd->sales_price_aed }}</span>
-                                </div>
+                                    @if($currencies->selected_currency == 'usd')
+                                        <span class="price">$ {{ $prd->sales_price_usd }}</span>
+                                    @elseif($currencies->selected_currency == 'yen')
+                                        <span class="price">¥ {{ $prd->sales_price_yen }}</span>
+                                    @else
+                                        <span class="price">BDT {{ $prd->sales_price_aed }}</span>
+                                    @endif                                </div>
                             </div>
                         </div>
                 @endforeach
@@ -208,8 +219,13 @@
                                     <span><i class="la la-star"></i></span>
                                     <span><i class="la la-star"></i></span>
                                 </div>
-                                <span
-                                    class="price">AED{{ $prd->sales_price_aed }}</span>
+                                @if($currencies->selected_currency == 'usd')
+                                    <span class="price">$ {{ $prd->sales_price_usd }}</span>
+                                @elseif($currencies->selected_currency == 'yen')
+                                    <span class="price">¥ {{ $prd->sales_price_yen }}</span>
+                                @else
+                                    <span class="price">BDT {{ $prd->sales_price_aed }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -263,8 +279,13 @@
                                     <span><i class="la la-star"></i></span>
                                     <span><i class="la la-star"></i></span>
                                 </div>
-                                <span
-                                    class="price">AED{{ $prd->sales_price_aed }}</span>
+                                @if($currencies->selected_currency == 'usd')
+                                    <span class="price">$ {{ $prd->sales_price_usd }}</span>
+                                @elseif($currencies->selected_currency == 'yen')
+                                    <span class="price">¥ {{ $prd->sales_price_yen }}</span>
+                                @else
+                                    <span class="price">BDT {{ $prd->sales_price_aed }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>

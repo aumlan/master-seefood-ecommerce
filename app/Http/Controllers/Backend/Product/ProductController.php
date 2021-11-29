@@ -90,8 +90,12 @@ class ProductController extends Controller
          $product->slug=$slug;
          $product->description=$request->content;
          $product->short_description=$request->short_description;
+
          $product->sales_price_aed=$request->sales_price_aed;
-         $product->discount_price=$request->discount_price;
+         $product->sales_price_usd=$request->sales_price_usd;
+         $product->sales_price_yen=$request->sales_price_yen;
+
+//         $product->discount_price=$request->discount_price;
          $product->tax=$request->tax;
          $product->sku=$request->sku;
          $product->productShowingPlace=$request->product_showing;

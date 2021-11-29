@@ -46,12 +46,13 @@ class HomeController extends Controller
     public function productDetails($id,$slug){
         $product =Product::find($id);
         $shipping =Shipping::all();
+        $currency = Currency::select('selected_currency')->find(1);
 
         $products =Product::where('category_id',$product->category_id)->skip(0)->take(8)->get();
         if(!MoBileView()){
-        return view('product_details_mymorich',compact('product','products','shipping'));
+        return view('product_details_mymorich',compact('product','products','shipping','currency'));
         }else{
-            return view('mobile.product_details_mymorich',compact('product','products','shipping'));
+            return view('mobile.product_details_mymorich',compact('product','products','shipping','currency'));
         }
     }
 
