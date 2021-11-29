@@ -75,7 +75,29 @@
             {{--                        </nav>--}}
             <div class="product_name">{{ $product->name }}</div>
             {{--                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 Star</span> <span class="rating-review">35 Ratings & 45 Reviews</span></div>--}}
-            <div> <span class="product_price mr-2">AED {{ $product->sales_price_aed }}</span> </div>
+            <div>
+                <input type="hidden" id="currect_currency" value="{{ $currency->selected_currency }}"/>
+
+                @if($currencies->selected_currency == 'usd')
+                    $ <span class="product_price mr-2" id="product_price">{{ $product->sales_price_usd }} </span>
+                    <input type="hidden" id="product_price_old" value="{{ $product->sales_price_usd }}"/>
+
+                @elseif($currencies->selected_currency == 'yen')
+                    ¥ <span class="product_price mr-2" id="product_price">{{ $product->sales_price_yen }} </span>
+                    <input type="hidden" id="product_price_old" value="{{ $product->sales_price_yen }}"/>
+                @else
+                    BDT <span class="product_price mr-2" id="product_price">{{ $product->sales_price_aed }} </span>
+                    <input type="hidden" id="product_price_old" value="{{ $product->sales_price_aed }}"/>
+                @endif
+                <input type="hidden" id="product_price_size" placeholder="size" value="0" />
+                <input type="hidden" id="product_price_fob" placeholder="fob" value="0" />
+                <input type="hidden" id="product_price_shipping" placeholder="shipping"  value="0" />
+
+{{--                <span class="product_price mr-2">AED {{ $product->sales_price_aed }}</span>--}}
+
+
+
+            </div>
             <div> <span class="product_saved">Available: </span>
                 @if( $product->stock_status === 'In_stock' )
                     <span style='color:green; font-size: 13px;font-weight: bold'> In Stock</span>
@@ -98,15 +120,57 @@
                     @endif
 
                     <li>
+{{--                        <div class="product-color">--}}
+{{--                            <span class="sub-title">Size: &nbsp;</span>--}}
+{{--                            <select class="select_option" name="size" id="size" style="width: 40%;">--}}
+{{--                                @foreach ($product->product_attr as $atrr)--}}
+{{--                                    @if (isSize($atrr->configure_attribute_id)!==null)--}}
+{{--                                        @php--}}
+{{--                                            $getSize =  isSize($atrr->configure_attribute_id)--}}
+{{--                                        @endphp--}}
+{{--                                        <option value="{{$getSize->name}}" >{{$getSize->name}}</option>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+                        @if (count($product->productSpecification) > 0)
+                            <div class="product-color">
+                                <span class="sub-title">Size:</span>
+                                <select class="select_option" name="size" id="sizePrice" style="width: 40%;" onchange="setSizePrice()">
+                                    <option value="" disabled selected> Select Size </option>
+                                    @foreach ($product->productSpecification as $specs)
+                                        <option value="{{$specs->attribute_description}}" > {{$specs->attribute_name}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+                    </li>
+                    <li>
                         <div class="product-color">
-                            <span class="sub-title">Size: &nbsp;</span>
-                            <select class="select_option" name="size" id="size" style="width: 40%;">
+                            <span class="sub-title">Type:</span>
+                            <select class="select_option" name="type" id="type" style="width: 40%;">
                                 @foreach ($product->product_attr as $atrr)
-                                    @if (isSize($atrr->configure_attribute_id)!==null)
+                                    @if (isType($atrr->configure_attribute_id)!==null)
                                         @php
-                                            $getSize =  isSize($atrr->configure_attribute_id)
+                                            $getType=  isType($atrr->configure_attribute_id);
                                         @endphp
-                                        <option value="{{$getSize->name}}" >{{$getSize->name}}</option>
+                                        <option value="{{$getType->name}}" >{{$getType->name}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </li>
+                    <li style="display: none">
+                        <div class="product-color" style="display: none">
+                            {{--                            <span class="sub-title">FOB:</span>--}}
+                            <select class="select_option" name="fobPrice" id="fobPrice" style="width: 40%;" onchange="setFOBPrice()">
+                                <option value="" disabled selected> Select FOB </option>
+                                @foreach ($product->product_attr as $atrr)
+                                    @if (isFOB($atrr->configure_attribute_id)!==null)
+                                        @php
+                                            $getFOB=  isFOB($atrr->configure_attribute_id);
+                                        @endphp
+                                        <option value="{{$getFOB->icon}}" >{{$getFOB->name}}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -114,16 +178,22 @@
                     </li>
                     <li>
                         <div class="product-color">
-                            <span class="sub-title">Color:</span>
-                            <select class="select_option" name="color" id="color" style="width: 40%;">
-                                @foreach ($product->product_attr as $atrr)
-                                    @if (isColor($atrr->configure_attribute_id)!==null)
-                                        @php
-                                            $getColor =  isColor($atrr->configure_attribute_id);
-                                        @endphp
-                                        <option value="{{$getColor->name}}" >{{$getColor->name}}</option>
-                                    @endif
+                            <span class="sub-title">Destination:</span>
+                            <select class="select_option" name="destination_product_details" id="destination_product_details" style="width: 40%;">
+                                <option value="0" disabled selected> Select Destination </option>
+                                @foreach ($shipping as $shpng)
+                                    <option value="{{$shpng->id}}" >{{$shpng->destination_name}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-color">
+                            <span class="sub-title">Shipping:</span>
+                            <select class="select_option" name="shippig_product_details" id="shippig_product_details" style="width: 40%;" onchange="setShippingPrice()">
+                                <option value="" disabled selected> Select Shipping </option>
+                                <option value="by_sea" >By Sea</option>
+                                <option value="by_air" >By Air</option>
                             </select>
                         </div>
                     </li>
@@ -159,8 +229,12 @@
                 <div clas="col-lg-5">
                     <button type="button" class="button-68" onclick="addToCart({{ $product->id }},
                         document.getElementById('quantity_input').value,
-                        document.getElementById('size').value,
-                        document.getElementById('color').value)"
+                        document.getElementById('product_price').innerText,
+                        document.getElementById('sizePrice').options[document.getElementById('sizePrice').selectedIndex].text,
+                        document.getElementById('type').value,
+                        document.getElementById('fobPrice').options[document.getElementById('fobPrice').selectedIndex].text,
+                        document.getElementById('destination_product_details').options[document.getElementById('destination_product_details').selectedIndex].text,
+                        document.getElementById('shippig_product_details').options[document.getElementById('shippig_product_details').selectedIndex].text)"
                         {{ $product->stock_status == 'In_stock' ? '' : 'disabled' }}
                     >
                         <i class="fas fa-cart-plus"></i>
@@ -225,5 +299,88 @@
             jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())),
             a.trigger("change")
     });
+</script>
+<script>
+    function setSizePrice() {
+        var currency = $('#currect_currency').val() ;
+        var oldPrice = parseInt($('#product_price_old').val());
+        var newPrice = 0;
+
+        if (currency=== 'usd'){
+            $('#product_price_size').attr('value', ($('#sizePrice').val() * 0.012).toFixed(2) );
+        }else if (currency=== 'yen'){
+            $('#product_price_size').attr('value', ($('#sizePrice').val() * 1.33).toFixed(2)  );
+        } else{
+            $('#product_price_size').attr('value', $('#sizePrice').val());
+        }
+
+        var total=parseFloat($('#product_price_old').val()) + parseFloat( $('#product_price_shipping').val() ) + parseFloat( $('#product_price_fob').val() ) + parseFloat( $('#product_price_size').val() );
+
+        $('#product_price').text(total.toFixed(2));
+    }
+</script>
+
+{{--    <script>--}}
+{{--        function setFOBPrice() {--}}
+{{--            var oldPrice = parseInt($('#product_price_old').val());--}}
+{{--            var newPrice = 0;--}}
+
+{{--            $('#product_price_fob').attr('value', $('#fobPrice').val());--}}
+
+{{--            var total=parseInt($('#product_price_old').val()) + parseInt( $('#product_price_shipping').val() ) + parseInt( $('#product_price_fob').val() ) + parseInt( $('#product_price_size').val() );--}}
+
+{{--            $('#product_price').text(total);--}}
+{{--        }--}}
+{{--    </script>--}}
+
+<script>
+    function setShippingPrice() {
+        var currency = $('#currect_currency').val() ;
+        var destination_id = $('#destination_product_details').val();
+        var method = $('#shippig_product_details').val();
+
+
+        if (destination_id != null) {
+            $.ajax({
+                url: '{{ url('get/shipping') }}/' + destination_id,
+                type: 'GET',
+                dataType: 'json',
+            })
+                .done(function(response) {
+
+                    if (method === 'by_sea'){
+
+                        if (currency=== 'usd'){
+                            $('#product_price_shipping').attr('value', (response[0].by_sea * 0.012).toFixed(2) );
+                        }else if (currency=== 'yen'){
+                            $('#product_price_shipping').attr('value', (response[0].by_sea * 1.33).toFixed(2)  );
+                        } else{
+                            $('#product_price_shipping').attr('value', response[0].by_sea);
+                        }
+
+                        // $('#product_price_shipping').attr('value', response[0].by_sea);
+                    }else{
+                        if (currency=== 'usd'){
+                            $('#product_price_shipping').attr('value', (response[0].by_air * 0.012).toFixed(2) );
+                        }else if (currency=== 'yen'){
+                            $('#product_price_shipping').attr('value', (response[0].by_air * 1.33).toFixed(2)  );
+                        } else{
+                            $('#product_price_shipping').attr('value', response[0].by_air);
+                        }
+
+                        // $('#product_price_shipping').attr('value', response[0].by_air);
+                    }
+
+                    var total=parseFloat($('#product_price_old').val()) + parseFloat( $('#product_price_shipping').val() ) + parseFloat( $('#product_price_fob').val() ) + parseFloat( $('#product_price_size').val() );
+
+                    $('#product_price').text(total.toFixed(2));
+
+                });
+
+        } else {
+            toastr.warning('Please Select The Destination');
+        }
+    }
+
 </script>
 @endpush

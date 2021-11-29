@@ -1454,7 +1454,7 @@ mark{
 .button-68 {
     appearance: none;
     backface-visibility: hidden;
-    background-color: #17ac60;
+    background-color: #1E5A98;
     border-radius: 8px;
     border-style: none;
     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
@@ -1483,7 +1483,7 @@ mark{
 }
 
 .button-68:hover {
-    background-color: #149553;
+    background-color: #2270bd;
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
