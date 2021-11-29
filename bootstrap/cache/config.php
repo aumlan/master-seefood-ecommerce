@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:ofYmovd+v/nALfbxjTBOaEyhpoIbncpVP671Zi9/m04=',
+    'key' => 'base64:nKGgvlTeDSWvJpUvLx55VTvZWR8wBnbt0wd+Im/HNsE=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (

@@ -83,21 +83,21 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabVerticalLeft1" role="tabpanel"
                                     aria-labelledby="baseVerticalLeft-tab1">
-                                    <label for="product_name">Regular Price (AED)</label>
+                                    <label for="product_name">Regular Price (BDT)</label>
                                     <div class="form-group">
                                         <div class="row d-flex">
                                             <div class="col-md-12" >
                                                 <input class="form-control" type="number" id="sale_price_aed" name="sales_price_aed"
-                                                                          placeholder="AED د.إ"></div>
+                                                                          placeholder=""></div>
                                         </div>
                                     </div>
 
-                                    <label for="product_name">Discount Price (AED)</label>
+                                    <label for="product_name">Discount Price (BDT)</label>
                                     <div class="form-group">
                                         <div class="row d-flex">
                                             <div class="col-md-12" >
                                                 <input class="form-control" type="number" id="discount_price" name="discount_price"
-                                                       placeholder="AED د.إ"></div>
+                                                       placeholder=""></div>
                                         </div>
                                     </div>
 
@@ -209,7 +209,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Product Specs
+                        Product Size
                     </div>
                     <div class="card-body" id="more_box">
                         <div class="row">
@@ -231,7 +231,7 @@
                             <div class="col-lg-5">
                                 <div class="form-group">
                                     <input type="text" name="specs_value[]" class="form-control" id="specsValue"
-                                        placeholder="Specs Value">
+                                        placeholder="Price">
                                 </div>
                             </div>
                             <div class="col-lg-1">

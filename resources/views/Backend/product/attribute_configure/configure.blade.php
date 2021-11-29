@@ -10,6 +10,7 @@
 @section('breadcrumb')
 @endsection
 @section('content')
+{{--    {{ dd(Request::url())  }}--}}
     <div class="row">
         <div class="col-xl-4 col-lg-4">
             <div class="card">
@@ -30,6 +31,19 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            @if(Request::is('admin/product/attribute/configure/4') )
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-vertical">Charge</label>
+                                        <input type="number" id="first-name-vertical" class="form-control" name="charge" placeholder="">
+                                        @error('name')
+                                        <small id="emailHelp" class="form-text text-muted">{{$message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endif
+
                             <div class="col-12">
                                 <fieldset class="form-group">
                                     <textarea class="form-control" id="basicTextarea" rows="3" name="description" placeholder="Description"></textarea>
@@ -53,7 +67,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Icon</th>
+                                    @if(Request::is('admin/product/attribute/configure/4') )
+                                        <th>Charge</th>
+                                    @endif
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -62,7 +79,14 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{$attribute->name}}</td>
-                                        <td><img src="{{asset($attribute->icon)}}" alt="" srcset=""></td>
+                                        @if(Request::is('admin/product/attribute/configure/4') )
+                                            <td>
+                                                {{--                                            <img src="{{asset($attribute->icon)}}" alt="" srcset="">--}}
+                                                {{$attribute->icon}} BDT
+                                            </td>
+                                        @endif
+
+
                                         <td>
                                             <a href="#" onclick="deleteCategory({{$attribute->id}})" class="btn btn-sm btn-danger">x</a>
                                         </td>

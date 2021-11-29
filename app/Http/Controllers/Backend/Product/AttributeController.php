@@ -71,19 +71,23 @@ class AttributeController extends Controller
             $request->validate([
                 'name'=>'required'
             ]);
-            if($request->icon){
-                $imageName = 'images/configure_attribute/'.time().'.'.$request->icon->extension();
-                $request->icon->move(public_path('images/configure_attribute'), $imageName);
-            }else{
-                $imageName=null;
-            }
-            ConfigureAttribute::create([
-                'name'=>$request->name,
-                'attribute_id'=>$attibute_id,
-                'icon'=>$imageName,
-                'description'=>$request->description,
-            ]);
-            return back();
+        $charge = 0;
+        if($request->charge){
+            $charge = $request->charge;
+//            $imageName = 'images/attributes/'.time().'.'.$request->icon->extension();
+//            $request->icon->move(public_path('images/attributes'), $imageName);
+        }else{
+            $charge = 0;
+//            $imageName=null;
+        }
+
+        ConfigureAttribute::create([
+            'name'=>$request->name,
+            'attribute_id'=>$attibute_id,
+            'icon'=>$charge,
+            'description'=>$request->description,
+        ]);
+        return back();
     }
 
     public function configureDelete($id){
