@@ -1,5 +1,22 @@
 
 
+    <div class="shopping_bag">
+        <div class="btn_wrap_custom">
+            <span class="btn_wrap_span">Chat With Us</span>
+            <div class="container_custom">
+                <a href="https://wa.me/+8801313444644?text=Hi" target="_blank"><img src="{{ asset('site_image/icons8-whatsapp.svg') }}" alt="" width="80px"></a>
+                <a href="https://m.me/masterseafoodcoltd" target="_blank"><img src="{{ asset('site_image/messenger.png') }}" alt="" width="80px"></a>
+
+
+                <a href="#" data-toggle="tooltip" data-placement="left" title="master-seafood"><img src="{{ asset('site_image/wechat.png') }}" alt="" width="80px"></a>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
 <div class="header_section">
     <div class="header_wrapper">
         <div class="container" style="max-width: 1250px;">
@@ -7,15 +24,16 @@
                 <div class="top-header-left-side d-flex">
                     <div ><ion-icon name="call-outline"></ion-icon></div>
                     <div class="ml-2 mr-2">
-                        <a class="text-dark" href="tel:8801313444600">
-                            <p style="font-size: 13px">+8801313444600</p>
+                        <a class="text-dark" href="tel:8801313444644">
+                            <p style="font-size: 13px">+8801313444644</p>
                         </a>
                     </div>
                     <div style="border-right: 1px solid #B6B8B9"></div>
                     <div class="ml-2"><i class="far fa-envelope-open"></i></div>
                     <div class="ml-2">
-                        <a class="text-dark" href="mailto:info@master-seafood.com">
-                            <p style="font-size: 13px">info@master-seafood.com</p>
+                        <a class="text-dark" href="mailto:ruhulaminshaik@gmail.com">
+{{--                            <p style="font-size: 13px">info@master-seafood.com</p>--}}
+                            <p style="font-size: 13px">ruhulaminshaik@gmail.com</p>
                         </a>
 
                     </div>

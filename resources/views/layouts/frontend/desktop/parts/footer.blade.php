@@ -8,7 +8,7 @@
                 <div class="col-sm-5">
                     <h4>About</h4>
                     <p>
-                        Master See Food About
+                        We deliver premium quality seafood throughout the world. Our motto is to deliver the highest quality seafood at a reasonable price.
                     </p>
 
                 </div>
@@ -44,11 +44,10 @@
 
 
                     <ul class="list-unstyled text-white">
-                        help my Master Se Food
-{{--                        <li>+971 4 2342 522</li>--}}
-{{--                        <li>info@mawazperfum.com</li>--}}
-{{--                        <li>Hasan Abdulraheem Building,Shop No.03, 04 & 05.</li>--}}
-{{--                        <li>Deira, Dubai, United Arab Emirates</li>--}}
+                        <li>+880 1313 444 644</li>
+                        <li>ruhulaminshaik@gmail.com</li>
+                        <li>House-74, Block-C, Nolbhog, Nishat Nagar</li>
+                        <li>Turag, Dhaka-1230</li>
                     </ul>
 
                 </div>
@@ -63,11 +62,12 @@
             <div class="col-lg-12">
                 <div class="footer-social-icons">
                     <ul class="list-inline" style="display: flex;justify-content: center;">
-                        <li><a href="#" target="_blank"><ion-icon name="logo-facebook" style="font-size: 25px"></ion-icon></a></li>
-                        <li><a href="#" target="_blank"><ion-icon name="logo-linkedin" style="font-size: 25px"></ion-icon></a></li>
-                        <li><a href="#" target="_blank"><ion-icon name="logo-youtube" style="font-size: 25px"></ion-icon></a></li>
-                        <li><a href="#" target="_blank"><ion-icon name="logo-instagram" style="font-size: 25px"></ion-icon></a></li>
-                        <li><a href="#" target="_blank"><ion-icon name="logo-pinterest" style="font-size: 25px"></ion-icon></a></li>
+                        <li><a href="https://www.facebook.com/masterseafoodcoltd/" target="_blank"><ion-icon name="logo-facebook" style="font-size: 25px"></ion-icon></a></li>
+                        <li><a href="https://www.instagram.com/master__seafood/" target="_blank"><ion-icon name="logo-instagram" style="font-size: 25px"></ion-icon></a></li>
+                        <li><a href="mailto:info@master-seafood.com" target="_blank"><ion-icon name="mail-outline" style="font-size: 25px"></ion-icon></a></li>
+                        <li><a href="tel:tel:+8801313444600 target=" target="_blank"><ion-icon name="call-outline" style="font-size: 25px"></ion-icon></a></li>
+                        <li><a href="https://www.pinterest.com/master_seafood/" target="_blank"><ion-icon name="logo-pinterest" style="font-size: 25px"></ion-icon></a></li>
+
                     </ul>
                 </div>
             </div>
@@ -84,5 +84,7 @@
         </div>
 
     </div>
+
+
 
 </footer>

@@ -20,13 +20,13 @@
             <div class="mobile_cart_count">0</div>
         </div>
     </a>
-    <a href="https://wa.me/+00971568718908?text=Hi" class="text-dark">
+    <a href="https://wa.me/+8801313444644?text=Hi" class="text-dark">
         <div class="bottomItem">
             <ion-icon style="font-size: 20px;" name="chatbubble-ellipses-outline"></ion-icon>
             <p>WhatsApp </p>
         </div>
     </a>
-    <a href="tel:00971568718908" class="text-dark">
+    <a href="tel:8801313444644" class="text-dark">
         <div class="bottomItem">
             <ion-icon name="call-outline" style="font-size: 20px;"></ion-icon>
             <p>Call</p>

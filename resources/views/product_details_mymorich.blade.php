@@ -73,7 +73,7 @@
                         <h4 class="entry-title">{{ $product->name }}</h4>
                         <div class="category">
                             <span>SKU: {{ $product->sku }}</span>
-                            <span>BRAND: {{ $product->brand ? $product->brand->name : '' }}</span>
+{{--                            <span>BRAND: {{ $product->brand ? $product->brand->name : '' }}</span>--}}
                         </div>
                         {{-- <div class="star-rating">
                             <span><i class="la la-star"></i></span>
@@ -346,28 +346,40 @@
                                 <div class="single-product-wrap">
                                     <div class="thumb">
                                         @if (count($prd->productImage) > 0)
-                                            <img src="{{ thumbnail($prd->productImage[0]->image) }}" alt="img">
+                                            <img src="{{ thumbnail($prd->productImage[0]->image) }}" alt="img" width="200px" style="object-fit: contain;width: 100%;height: 100%;}">
                                         @endif
-                                        <a class="btn btn-base bg-main" href="cart.html"><span
-                                                class="border-1"></span><span class="border-2"></span>QUICK
-                                            VIEW</a>
-{{--                                        <ul>--}}
-{{--                                            <li><a href="#"><i class="far fa-heart"></i></a></li>--}}
-{{--                                            <li><a href="#"><img src="img/icon/git-compare.png" alt="img"></a></li>--}}
-{{--                                            <li><a href="#"><img src="img/icon/shopping-bag.png" alt="img"></a></li>--}}
-{{--                                        </ul>--}}
+
+                                        <a class="btn btn-base bg-main" href="{{ route('product.details', [$prd->id, $prd->slug]) }}"><span class="border-1"></span><span
+                                                class="border-2"></span>QUICK VIEW</a>
+                                        {{--                                <ul>--}}
+                                        {{--                                    <li><a href="#"><i class="far fa-heart"></i></a></li>--}}
+                                        {{--                                    <li><a href="#"><img src="{{ asset('FrontendAsset/img/icon/git-compare.png') }}"--}}
+                                        {{--                                                         alt="img"></a></li>--}}
+                                        {{--                                    <li><a href="#"><img src="{{ asset('FrontendAsset/img/icon/shopping-bag.png') }}"--}}
+                                        {{--                                                         alt="img"></a></li>--}}
+                                        {{--                                </ul>--}}
                                     </div>
                                     <div class="wrap-details">
                                         <span class="categories">{{ $prd->category ? $prd->category->name : '' }}</span>
-                                        <h6><a href="{{route('product.details',[$prd->id,$prd->slug])}}">{{$prd->name}}</a></h6>
-                                        {{-- <div class="star-rating">
+                                        <h6><a
+                                                href="{{ route('product.details', [$prd->id, $prd->slug]) }}">
+                                                <span style="color: #ff8e01">{{ $prd->name }}</span>
+                                            </a>
+                                        </h6>
+                                        <div class="star-rating">
                                             <span><i class="la la-star"></i></span>
                                             <span><i class="la la-star"></i></span>
                                             <span><i class="la la-star"></i></span>
                                             <span><i class="la la-star"></i></span>
                                             <span><i class="la la-star"></i></span>
-                                        </div> --}}
-                                        <span class="price">AED {{$prd->sales_price_aed}}</span>
+                                        </div>
+                                        @if($currencies->selected_currency == 'usd')
+                                            <span class="price">$ {{ $prd->sales_price_usd }}</span>
+                                        @elseif($currencies->selected_currency == 'yen')
+                                            <span class="price">¥ {{ $prd->sales_price_yen }}</span>
+                                        @else
+                                            <span class="price">BDT {{ $prd->sales_price_aed }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
